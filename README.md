@@ -1,7 +1,22 @@
 # configs
 My configuration files
 
-TODO
+shell
+- .zshrc
+- .tmux.conf
+- .config
+  -  git
+    -  config
+    -  commit-nsg-template
+  -  pip
+    - config
+editor
+- .config
+   - vimrc
+
+- bins/bin 
+
+other configuration files related with "zsh" and "on my zsh"
 
 ## Sources
 

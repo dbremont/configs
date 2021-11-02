@@ -19,10 +19,22 @@ editor
    - vimrc
 
 - bins/bin
+  -  script to check my development configuration.
+  -  languages, and other tools
+  -  go,
+  -  oclaml,
+  -  python,
+  -  c++,
+  -  ...
 
 gui
   - autokey
 
+env (shell agnostic )
+  - aliases
+  - env
+  - profile
+  
 other configuration files related with "zsh" and "on my zsh"
 
 ## Sources

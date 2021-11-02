@@ -6,8 +6,9 @@ shell
 - .tmux.conf
 - .config
   -  git
-    -  config
-    -  commit-nsg-template
+      -  config
+      -  commit-nsg-template
+      -  hooks
   -  pip
     - config
 editor

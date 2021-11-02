@@ -20,8 +20,8 @@ editor
 
 - bins/bin
 
-- gui
-   - autokey
+gui
+  - autokey
 
 other configuration files related with "zsh" and "on my zsh"
 

@@ -5,17 +5,23 @@ shell
 - .zshrc
 - .tmux.conf
 - .config
-  -  git
+  - git
       -  config
       -  commit-nsg-template
       -  hooks
-  -  pip
-    - config
+  - python
+    - pip.conf
+
+  - aspell
+  
 editor
 - .config
    - vimrc
 
-- bins/bin 
+- bins/bin
+
+- gui
+   - autokey
 
 other configuration files related with "zsh" and "on my zsh"
 

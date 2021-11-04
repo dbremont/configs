@@ -18,7 +18,7 @@ editor
 - .config
    - vimrc
 
-- bins/bin
+scripts/bin
   -  script to check my development configuration.
   -  languages, and other tools
   -  go,

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+: '
+- clean-trash: clean the trash can
+'
+
+echo 'To Clean':
+
+ls -rf ~/.local/share/Trash/*
+rm -rf ~/.local/share/Trash/*
+
+echo
+echo 'Done'

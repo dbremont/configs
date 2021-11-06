@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# echo $1 >> /home/dvictoriano/Code/Utils/out.txt
+echo $1 >> /home/dvictoriano/Code/Utils/out.txt
 
 #xdotool search --name $1 windowfocus key "ctrl+c"
 #xdotool search --name $1 windowfocus key "ctrl+l"
@@ -27,5 +27,3 @@ fi
 
 # xdotool key --window 0x020003d6  "ctrl+L"
 # xdotool key --window 0x020003d6  "ctrl+C"
-
-

@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-echo "Alarm start in " $1 ' Second/s.'
-sleep $1  && rhythmbox $SOUND_ALARM_HOME >> /dev/null
 
-echo "Alarm sound for 25 seconds."
-sleep 25 # ALARM SOUND DURATION
-echo "End"
+echo 'Start alarm in ' $1 'seconds.'
+
+sleep  $1
+
+mpv /home/dbremont/Music/mixkit-data-scaner-2847.wav >> /dev/null
+
+echo 'end'

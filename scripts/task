@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Write to a log <Task>, <Minutes Takes>, begin yyyy-month-day hh, when cltr  + c is callled.
+# More info to to this.
+# https://stackoverflow.com/questions/56119475/prevent-ctrlc-being-sent-to-process-called-from-a-bash-script
+
+# echo -ne '\e]0;'$1'\a'; sleep 5
+# Ejample task 'Read Chapter 1 Book X' 50
+# Mea
+
+SIM=60;
+
+while true
+do
+   if [ $SECONDS -gt $SIM ]
+   then 
+        #echo 'I am truth'
+	echo -ne '\e]0;'$1 $((SECONDS/$SIM)) 'MINS'. '\a'; 
+        #echo  $((SECONDS/$SIM))
+   else
+
+	echo -ne '\e]0;'$1 $SECONDS 'SECS'. '\a'; 
+   fi
+     #  echo -ne '\e]0;'$1 - $SECONDS  '\a'; 
+    sleep 1
+done
+

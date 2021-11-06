@@ -44,3 +44,5 @@ other configuration files related with "zsh" and "on my zsh"
 [JJGO/dotfiles](https://github.com/JJGO/dotfiles)
 
 [anishathalye/dotfiles](https://github.com/anishathalye/dotfiles)
+
+[cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)

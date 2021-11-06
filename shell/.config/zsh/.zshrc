@@ -1,23 +1,23 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export WILDFLY_HOME=/home/dvictoriano/Apps/wildfly-20.0.1.Final
+export WILDFLY_HOME=$HOME/Apps/wildfly-20.0.1.Final
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 
 # Is the current path `.` in the classpath by default?
-export CLASSPATH=/home/dvictoriano/aspectj1.9/lib/*
+export CLASSPATH=$HOME/aspectj1.9/lib/*
 export CLASSPATH=".:/usr/local/lib/antlr-4.9.2-complete.jar:$CLASSPATH"
 
-export PATH=/home/dvictoriano/Code/Utils:$PATH
-export PATH=/home/dvictoriano/aspectj1.9/bin:$PATH
-export PATH=/home/dvictoriano/.local/kitty.app/bin:$PATH
+export PATH=$HOME/Code/Utils:$PATH
+export PATH=$HOME/aspectj1.9/bin:$PATH
+export PATH=$HOME/.local/kitty.app/bin:$PATH
 
-export FZF_BASE=/home/dvictoriano/Apps/fzf
-export DOTFILES_PATH=/home/dvictoriano/dotfiles
+export FZF_BASE=$HOME/Apps/fzf
+export DOTFILES_PATH=$HOME/dotfiles
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/dvictoriano/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$(go env GOPATH)
@@ -88,7 +88,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump fzf colored-man-pages emoji-clock zsh-autosuggestions zsh-vi-mode)
+plugins=(git autojump fzf colored-man-pages zsh-autosuggestions zsh-vi-mode)
 
 source <(mcfly init zsh)
 
@@ -137,5 +137,5 @@ alias mid="mvn install -Pdeploy"
 alias play='playerctl play'
 alias pause='playerctl pause'
 
-alias jmc=/home/dvictoriano/Apps/jmc-8.0.1/jmc/jmc
+alias jmc=$HOME/Apps/jmc-8.0.1/jmc/jmc
 

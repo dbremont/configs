@@ -1,0 +1,37 @@
+{
+    "type": "script",
+    "description": "cm",
+    "store": {
+        "sm": {
+            "right": "left",
+            "left": "right",
+            "current": "right"
+        }
+    },
+    "modes": [
+        3
+    ],
+    "usageCount": 8,
+    "prompt": false,
+    "omitTrigger": false,
+    "showInTrayMenu": false,
+    "abbreviation": {
+        "abbreviations": [],
+        "backspace": true,
+        "ignoreCase": false,
+        "immediate": false,
+        "triggerInside": false,
+        "wordChars": "[\\w]"
+    },
+    "hotkey": {
+        "modifiers": [
+            "<ctrl>",
+            "<shift>"
+        ],
+        "hotKey": "m"
+    },
+    "filter": {
+        "regex": null,
+        "isRecursive": false
+    }
+}

@@ -1,0 +1,48 @@
+#! /usr/bin/env bash
+
+: '
+jirab: create branch using  jira ticket  for name
+
+- Dado un [ID] de un Ticket preparar el entorno de trabajo de jira
+
+- Movernos al branch master
+
+- Actualizar el master
+
+- Crear un nuevo branch utilizando la nomenclatura: yyyyMMdd-TICKET_ID
+
+exit 1  ## Error 
+'
+
+TICKET=$1
+BRANCH_NAME=''
+RED='\033[0;31m'
+
+echo "Creando branch para Ticket [$TICKET]"
+
+# Validar formato del ticket
+if [[ "$TICKET" =~ ^SGF-[0-9]{4,5}$ ]]; then
+	BRANCH_NAME=$(date '+%Y%m%d')-$TICKET
+else
+    echo -e "${RED}Ticket [${TICKET}] did not match SGF-DDDDD"
+    exit 1
+fi
+
+echo $PWD
+
+# Validar Repositorio
+if  [ ! $(echo $PWD | grep /home/dvictoriano/eclipse-workspace/sigef) ]; then
+	echo -e "${RED}Error. Solo puede ejecutar este script en un archivo /home/dvictoriano/eclipse-workspace/sigef"
+    exit 1 
+fi
+
+# Nos movemos al master branch
+git checkout master
+git pull
+
+# Creando el branch	
+git checkout -b  $BRANCH_NAME
+
+# git push --set-upstream origin 20211028-SGF-54075
+echo "Nuevo branch $BRANCH_NAME"
+

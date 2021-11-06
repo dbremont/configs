@@ -1,0 +1,3 @@
+#!/bin/bash
+
+jupyter notebook /home/dvictoriano/Code/Notebooks &> ~/Documents/.logs/juputerlog.txt &

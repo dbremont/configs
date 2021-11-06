@@ -1,0 +1,82 @@
+#! /usr/bin/env bash
+: '
+jiras: crate sql file using jira metadata
+
+- Dado un [ID] de un Ticket preparar el entorno de trabajo de jira sql
+
+- Crear archivo sql utilizando la nomemclatura  [SYSAID]-[TICKET]_[FILE_NAME.sql]
+
+exit 1  ## Error 
+'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+TICKET=$1
+FILE_NAME=''
+START=''
+
+echo "Creando archivo ...sql para [${TICKET}]"
+
+# Validar formato del ticket
+if [[ "$TICKET" =~ ^SGF-[0-9]{4,5}$ ]]; then
+	START=$(date '+%Y-%m-%d')
+else
+    echo -e "${RED}Ticket [${TICKET}] did not match SGF-DDDDD"
+    exit 1
+fi
+
+# Validar Repositorio
+if  [ ! $(echo $PWD | grep /home/dvictoriano/eclipse-workspace/scripts/sigef) ]; then
+	echo -e "${RED}Error. Solo puede ejecutar este script en un archivo /home/dvictoriano/eclipse-workspace/scripts/sigef"
+    exit 1 
+fi
+
+# xargs es para eliminar "
+TOKEN=$(jq .jira.token $DOTFILES_PATH/tokens | xargs)
+
+if [ ! $TOKEN ]; then
+	echo -e "${RED} Can not find jira token at $DOTFILES_PATH/tokens"
+fi
+
+OUTPUT=$(curl -s -request --GET  \
+	  --url "https://mh-pafi.atlassian.net/rest/api/3/issue/$TICKET" \
+	  --user "dvictoriano@hacienda.gov.do:$TOKEN" \
+	  --header "Accept: application/json")
+
+# Verificar la respuesta correcta
+if ! jq -e . >/dev/null 2>&1 <<<"$OUTPUT"; then
+	echo -e "${RED}Error. Bad Response"
+	echo -e "${RED}$OUTPUT)"
+    exit 1 
+fi
+	
+SYSAID=$(jq .fields.customfield_10158  <(echo $OUTPUT))
+# FILE_NAME=$(jq .fields.summary <(echo $OUTPUT) | tr -d '[:space:]' | xargs)
+
+FILE_NAME=$(jq .fields.summary <(echo $OUTPUT) | xargs)
+SCRIPT="print(\"$FILE_NAME\".strip())"
+FILE_NAME=$(python -c "$SCRIPT" | sed "s/\s/_/g")
+FILE_NAME="SA${SYSAID}_${TICKET}_${FILE_NAME}.sql"
+
+DUE_DATE=$(jq .fields.duedate <(echo $OUTPUT) | xargs)
+
+echo "/*
+ * @dvictoriano
+ * $(jq .fields.summary <(echo $OUTPUT) | xargs)
+ * https://mh-pafi.atlassian.net/browse/${TICKET}
+ * Start: ${START}
+ * Due: ${DUE_DATE} 
+ * */
+	
+BEGIN
+
+  {your works goes here}
+
+COMMIT;
+END;
+/
+" > $FILE_NAME
+
+echo -e "Archivo creado en ${GREEN}$PWD/$FILE_NAME"
+
+echo $PWD/$FILE_NAME | xclip -sel clip
+

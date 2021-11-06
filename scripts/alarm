@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Alarm start in " $1 ' Second/s.'
+sleep $1  && rhythmbox $SOUND_ALARM_HOME >> /dev/null
+
+echo "Alarm sound for 25 seconds."
+sleep 25 # ALARM SOUND DURATION
+echo "End"

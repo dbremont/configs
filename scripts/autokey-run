@@ -1,0 +1,3 @@
+#!/bin/bash
+
+autokey &> ~/Documents/.logs/autokeylog.txt &

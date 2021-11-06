@@ -1,0 +1,224 @@
+#!/usr/bin/env zsh
+function alias_if_exists() {
+  # Does the alias only if the aliased program is installed
+    if command -v $2 > /dev/null; then
+        alias "$1"="$2"
+    fi
+}
+
+
+# Better defaults
+alias_if_exists 'diff' 'colordiff'
+alias_if_exists 'ag' 'rg'
+alias_if_exists 'vim' 'nvim'
+alias_if_exists 'fdupes' 'jdupes'
+
+
+# Shortcuts
+
+## cd & ls
+if command -v exa > /dev/null; then
+  alias ls=exa
+  alias l="exa -1"
+  alias la="exa -a"
+fi
+
+
+## Jupyter
+alias jpc="jupyter console"
+alias jpco="jupyter nbconvert"
+alias jpn="jupyter notebook"
+alias jpn-b="jupyter notebook --no-browser"
+
+# Yotube-DL
+alias yt="youtube-dl"
+alias yta="youtube-dl --extract-audio --audio-format mp3"
+alias ytad="youtube-dl --extract-audio --audio-format mp3 --write-description --add-metadata --embed-thumbnail --write-info-json"
+alias gdl="gallery-dl"
+
+
+# antlr
+alias antlr4='java -jar /usr/local/lib/antlr-4.9.2-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
+
+# Maven
+
+alias mci="mvn clean install"
+alias mi="mvn install"
+alias mc="mvn clean"
+alias mid="mvn install -Pdeploy"
+
+# Playerctl
+alias play='playerctl play'
+alias pause='playerctl pause'
+			
+# JDK Mission Control
+alias jmc=$HOME/Apps/jmc-8.0.1/jmc/jmc
+
+## Misc
+alias my-ip="curl ipinfo.io/ip 2> /dev/null"
+alias sr='screen -r'
+alias code='subl'
+# alias tb="nc termbin.com 9999"
+alias spell='aspell check --dont-backup'
+alias grepc="grep -P --color=always" #Color grep
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+
+
+
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias printpath='echo $PATH | sed "s/:/\\n/g"'
+# Other
+# alias matlabc='matlab -nodesktop -nosplash'
+  # Create separator using current columns
+alias sep='tput cols | python -c "import sys; print(\"=\"*int(sys.stdin.read().strip()))"'
+alias rg="sep; rg -u"
+
+# chrome
+alias wb=chromium
+
+# Rename terminal Windows
+  # $1 = type; 0 - both, 1 - tab, 2 - title
+  # rest = text
+setTerminalText () {
+    # echo works in bash & zsh
+    local mode=$1 ; shift
+    echo -ne "\033]$mode;$@\007"
+}
+stt_both  () { setTerminalText 0 $@; }
+stt_tab   () { setTerminalText 1 $@; }
+stt_title () { setTerminalText 2 $@; }
+
+tn () { stt_tab $@ && tmux new -s $@; }
+ta () { stt_tab $@ && tmux a -t $@; }
+
+###########################################################################################################################
+
+# SECRET ALIASES
+if [ -f ~/.secret-aliases ]; then
+    source ~/.secret-aliases
+fi
+
+# LOCAL ALIASES
+if [ -f ~/.local-aliases ]; then
+    source ~/.local-aliases
+fi
+
+###########################################################################################################################
+
+# Functions
+# Like a local wormhole
+function snd() {
+    mkdir -p /tmp/passage
+    /bin/cp $1 /tmp/passage
+    /bin/rm /tmp/passage/last &>/dev/null || true
+    echo $1 > /tmp/passage/last
+}
+
+function rcv() {
+    file=$(cat /tmp/passage/last)
+    /bin/cp -i "/tmp/passage/$file" $file
+    /bin/rm "/tmp/passage/$file"
+}
+
+# fzf
+if command -v fzf > /dev/null; then
+
+  function fzf-history() {
+      local tac
+      if which tac > /dev/null; then
+          tac="tac"
+      else
+          tac="tail -r"
+      fi
+      BUFFER=$(\history -n 1 | fzf)
+      CURSOR=$#BUFFER
+  }
+  # zle -N fzf-history
+  # bindkey '^r' fzf-history
+
+  fh() {
+    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+  }
+
+  # fkill - kill process
+  fkill() {
+    local pid
+    pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+    if [ "x$pid" != "x" ]
+    then
+      echo $pid | xargs kill -${1:-9}
+    fi
+  }
+
+  v() {
+    local file
+    if [[ -f $1 ]]; then
+        vim $1
+    else
+        file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "${file}" || return 1
+    fi
+  }
+
+  if command -v subl > /dev/null; then
+    u() {
+      local file
+      file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && subl "${file}" || return 1
+    }
+  fi
+
+  #less on fuzzy find
+  fl() {
+    less $(fzf)
+  }
+
+fi
+
+## Ripgrep-all
+
+if command -v rga > /dev/null; then
+    alias rgim="rga --rga-adapters=+tesseract -j4"
+    # Interactive rga
+    rga-fzf() {
+        RG_PREFIX="rga --files-with-matches"
+        local file
+        file="$(
+            FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+                fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+                    --phony -q "$1" \
+                    --bind "change:reload:$RG_PREFIX {q}" \
+                    --preview-window="70%:wrap"
+        )" &&
+        echo "opening $file" &&
+        xdg-open "$file"
+    }
+fi
+
+# Complete from google
+function auto() {
+    url='https://www.google.com/complete/search?client=hp&hl=en&xhr=t'
+    # NB: user-agent must be specified to get back UTF-8 data!
+    curl -H 'user-agent: Mozilla/5.0' -sSG --data-urlencode "q=$*" "$url" |
+        jq -r ".[1][][0]" |
+        sed 's,</\?b>,,g'
+}
+
+
+
+###########################################################################################################################
+
+
+# # Comment below if not fzf and fasd
+# unalias z
+# # fasd & fzf change directory - jump using `fasd` if given argument, filter output of `fasd` using `fzf` else'
+# z() {
+#   [ $# -gt 0 ] && fasd_cd -d "$*" && return
+#   local dir
+#   dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+# }
+
+

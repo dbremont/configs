@@ -34,5 +34,5 @@ else:
 next  =  sm[sm["current"]]
 sm["current"] = next
 
-cmd = "/home/dvictoriano/Code/Utils/cw {}".format(next)
+cmd = "$HOME/configs/scripts/cw {}".format(next)
 system.exec_command(cmd, getOutput=False)

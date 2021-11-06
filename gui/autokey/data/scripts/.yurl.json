@@ -5,10 +5,10 @@
     "modes": [
         3
     ],
-    "usageCount": 0,
-    "prompt": false,
+    "usageCount": 17,
+    "prompt": true,
     "omitTrigger": false,
-    "showInTrayMenu": false,
+    "showInTrayMenu": true,
     "abbreviation": {
         "abbreviations": [],
         "backspace": true,

@@ -12,7 +12,7 @@ time.sleep(0.25)
 
 reCaracteresAceptados =  '[^a-zA-Z0-9 \n\.]';
 
-clipboard.fill_clipboard("")
+clipboard.fill_clipboard("")		
 
 # Esto es algo bonito, algunas nombres de las ventanas continene metacaracteres regex, 
 # y lo por lo tanto hay que escaparlos.
@@ -22,7 +22,8 @@ originalTitle = window.get_active_title();
 winTitle = re.sub(reCaracteresAceptados, '.', window.get_active_title()) 
 winClass = window.get_active_class()
 
-cmd = f'/home/dvictoriano/Code/Utils/uyurl "{winTitle}"'
+
+cmd = f'$HOME/configs/scripts/uyurl "{winTitle}"'
 
 system.exec_command(cmd)
 

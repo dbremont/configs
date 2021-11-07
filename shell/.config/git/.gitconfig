@@ -2,9 +2,8 @@
 	email = dvictoriano@hacienda.gov.do
 	name = dvictoriano
 [core]
-	autocrlf = true
+	autocrlf = input
 	editor = vim
 [commit]
-	template=/home/dvictoriano/dotfiles/commit-msg-template
+	template=$HOME/configs/shell/.config/git/commit-msg-template
 	status= false
-

@@ -23,6 +23,7 @@ if command -v exa > /dev/null; then
   alias la="exa -a"
 fi
 
+alias battery="upower -i $(upower -e | grep '/battery') | grep --color=never -E 'state|to\ full|to\ empty|percentage'"
 
 ## Jupyter
 alias jpc="jupyter console"

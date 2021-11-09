@@ -14,7 +14,7 @@
     "usageCount": 39,
     "prompt": false,
     "omitTrigger": false,
-    "showInTrayMenu": true,
+    "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [],
         "backspace": true,

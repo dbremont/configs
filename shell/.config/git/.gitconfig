@@ -5,5 +5,5 @@
 	autocrlf = input
 	editor = vim
 [commit]
-	template=$HOME/configs/shell/.config/git/commit-msg-template
+	template=/home/dbremont/configs/shell/.config/git/commit-msg-template
 	status= false

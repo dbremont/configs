@@ -59,7 +59,7 @@ alias jmc=$HOME/Apps/jmc-8.0.1/jmc/jmc
 ## Misc
 alias my-ip="curl ipinfo.io/ip 2> /dev/null"
 alias sr='screen -r'
-alias code='subl'
+alias code='code-insiders'
 # alias tb="nc termbin.com 9999"
 alias spell='aspell check --dont-backup'
 alias grepc="grep -P --color=always" #Color grep

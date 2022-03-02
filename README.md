@@ -1,41 +1,24 @@
 # configs
 My configuration files
 
-shell
-- .zshrc
-- .tmux.conf
-- .config
-  - git
-      -  config
-      -  commit-nsg-template
-      -  hooks
-  - python
-    - pip.conf
+## Tools
 
-  - aspell
-  
-editor
-- .config
-   - vimrc
+- kitty
+- autojump
+- tldr pages
+- fzf
+- zsh
+- ohmyzsh
+- mcfly
 
-scripts/bin
-  -  script to check my development configuration.
-  -  languages, and other tools
-  -  go,
-  -  oclaml,
-  -  python,
-  -  c++,
-  -  ...
+## Getting Started
 
-gui
-  - autokey
+Say $CONFIG_PATH  is the path.
 
-env (shell agnostic )
-  - aliases
-  - env
-  - profile
-  
-other configuration files related with "zsh" and "on my zsh"
+- Apuntar ~/.zshrc
+- Apuntar .env
+- Apuntar .env_local  
+- Apuntar .aliases 
 
 ## Sources
 
@@ -48,4 +31,3 @@ other configuration files related with "zsh" and "on my zsh"
 [cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
 
 [Dotfiles](https://gitlab.com/dwt1/dotfiles)
-

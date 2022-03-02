@@ -3,13 +3,14 @@ My configuration files
 
 ## Tools
 
-- kitty
-- autojump
-- tldr pages
-- fzf
-- zsh
-- ohmyzsh
-- mcfly
+- [kitty]()
+- [autojump](https://github.com/wting/autojump)
+- [tldr pages](https://tldr.sh/)
+- [fzf](https://github.com/junegunn/fzf)
+- [zsh](https://www.zsh.org/)
+- [ohmyzsh](https://ohmyz.sh/)
+- [mcfly](https://github.com/cantino/mcfly)
+- [rg](https://github.com/BurntSushi/ripgrep)
 
 ## Getting Started
 

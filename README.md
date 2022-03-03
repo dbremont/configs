@@ -23,7 +23,7 @@ My configuration files
 
 ## Demostracion
 
-- kitty (terminal emulator), zsh (interperte)
+- kitty (terminal emulator), zsh (interpreter)
 - fzf, tldr pages, ctlr + r (mcfly), j (autojump)
 
 ![Demostracion](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)

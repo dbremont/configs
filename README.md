@@ -28,3 +28,5 @@ My configuration files
 - [anishathalye/dotfiles](https://github.com/anishathalye/dotfiles)
 - [cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
 - [Dotfiles](https://gitlab.com/dwt1/dotfiles)
+
+![Demostracion](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)

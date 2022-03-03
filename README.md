@@ -9,6 +9,7 @@ My configuration files
 - [fzf](https://github.com/junegunn/fzf)
 - [zsh](https://www.zsh.org/)
 - [ohmyzsh](https://ohmyz.sh/)
+  - https://github.com/zsh-users/zsh-autosuggestions
 - [mcfly](https://github.com/cantino/mcfly)
 - [rg](https://github.com/BurntSushi/ripgrep)
 

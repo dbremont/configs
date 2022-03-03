@@ -3,15 +3,16 @@ My configuration files
 
 ## Tools
 
-- [kitty]()
-- [autojump](https://github.com/wting/autojump)
-- [tldr pages](https://tldr.sh/)
-- [fzf](https://github.com/junegunn/fzf)
-- [zsh](https://www.zsh.org/)
-- [ohmyzsh](https://ohmyz.sh/)
-  - https://github.com/zsh-users/zsh-autosuggestions
-- [mcfly](https://github.com/cantino/mcfly)
-- [rg](https://github.com/BurntSushi/ripgrep)
+- [kitty](https://sw.kovidgoyal.net/kitty/): The fast, feature-rich, GPU based terminal emulator
+- [autojump](https://github.com/wting/autojump): A cd command that learns - easily navigate directories from the command line
+- [tldr pages](https://tldr.sh/): Simplified and community-driven man pages
+- [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
+- [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language
+- [ohmyzsh](https://ohmyz.sh/): Unleash your terminal like  never before.
+  - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions): Fish-like autosuggestions for zsh
+  - 
+- [mcfly](https://github.com/cantino/mcfly): Fly through your shell history (ctrl-r)
+- [rg](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern while respecting your gitignore
 
 ## Getting Started
 
@@ -22,12 +23,8 @@ My configuration files
 
 ## Sources
 
-[jonhoo/configs](https://github.com/jonhoo/configs)
-
-[JJGO/dotfiles](https://github.com/JJGO/dotfiles)
-
-[anishathalye/dotfiles](https://github.com/anishathalye/dotfiles)
-
-[cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
-
-[Dotfiles](https://gitlab.com/dwt1/dotfiles)
+- [jonhoo/configs](https://github.com/jonhoo/configs)
+- [JJGO/dotfiles](https://github.com/JJGO/dotfiles)
+- [anishathalye/dotfiles](https://github.com/anishathalye/dotfiles)
+- [cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
+- [Dotfiles](https://gitlab.com/dwt1/dotfiles)

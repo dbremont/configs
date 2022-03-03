@@ -21,6 +21,12 @@ My configuration files
 - ln -s $HOME/configs/env/.env $HOME/.env
 - ln -s $HOME/configs/env/.env_local $HOME/.env_local
 
+## Demostracion
+
+Kitty, fzf, tldr pages, , ctlr + r (mcfly), j (autojump)
+
+![Demostracion](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)
+
 ## Sources
 
 - [jonhoo/configs](https://github.com/jonhoo/configs)
@@ -28,5 +34,3 @@ My configuration files
 - [anishathalye/dotfiles](https://github.com/anishathalye/dotfiles)
 - [cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
 - [Dotfiles](https://gitlab.com/dwt1/dotfiles)
-
-![Demostracion](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)

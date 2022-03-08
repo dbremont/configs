@@ -10,9 +10,10 @@ My configuration files
 - [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language
 - [ohmyzsh](https://ohmyz.sh/): Unleash your terminal like  never before.
   - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions): Fish-like autosuggestions for zsh
-  - 
+  - [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
 - [mcfly](https://github.com/cantino/mcfly): Fly through your shell history (ctrl-r)
 - [rg](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern while respecting your gitignore
+- [exa](https://the.exa.website/): A modern replacement for ls
 
 ## Getting Started
 

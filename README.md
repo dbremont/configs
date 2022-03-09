@@ -22,6 +22,10 @@ My configuration files
 - ln -s $HOME/configs/env/.env $HOME/.env
 - ln -s $HOME/configs/env/.env_local $HOME/.env_local
 
+---
+
+ln -s $HOME/configs/shell/.config/vim/.vimrc  $HOME/.vimrc
+
 ## Demostracion
 
 - kitty (terminal emulator), zsh (interpreter)

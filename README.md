@@ -24,7 +24,8 @@ My configuration files
 
 ---
 
-ln -s $HOME/configs/shell/.config/vim/.vimrc  $HOME/.vimrc
+- ln -s $HOME/configs/shell/.config/vim/.vimrc  $HOME/.vimrc
+- In vim `:PluginInstall` to install the plugings
 
 ## Demostracion
 

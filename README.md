@@ -14,6 +14,7 @@ My configuration files
 - [mcfly](https://github.com/cantino/mcfly): Fly through your shell history (ctrl-r)
 - [rg](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern while respecting your gitignore
 - [exa](https://the.exa.website/): A modern replacement for ls
+- xclip
 
 ## Getting Started
 

@@ -1,4 +1,0 @@
-Listado de Herramientas Personales
-
-eml: 
-ripmime -i a.eml -v -d tmp -p hola

@@ -53,3 +53,7 @@ My configuration files
 - [cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
 - [Dotfiles](https://gitlab.com/dwt1/dotfiles)
 - [Awesome ZSH Plugisn](https://github.com/unixorn/awesome-zsh-plugins)
+
+## TBD
+
+- Configure glances (triggers for load notification) https://glances.readthedocs.io/en/latest/config.html

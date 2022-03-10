@@ -19,6 +19,10 @@ My configuration files
 - [exa](https://the.exa.website/): A modern replacement for ls
 - xclip
 - xbindkeys
+- ZSH Themes
+  - [typewritten](https://github.com/reobin/typewritten)
+  - [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+  - [spaceship-prompt](https://github.com/spaceship-prompt/spaceship-prompt)
 
 ## Getting Started
 
@@ -46,3 +50,4 @@ My configuration files
 - [anishathalye/dotfiles](https://github.com/anishathalye/dotfiles)
 - [cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
 - [Dotfiles](https://gitlab.com/dwt1/dotfiles)
+- [Awesome ZSH Plugisn](https://github.com/unixorn/awesome-zsh-plugins)

@@ -23,6 +23,8 @@ My configuration files
   - [typewritten](https://github.com/reobin/typewritten)
   - [powerlevel10k](https://github.com/romkatv/powerlevel10k)
   - [spaceship-prompt](https://github.com/spaceship-prompt/spaceship-prompt)
+- [Glances](https://nicolargo.github.io/glances/): Glances is a cross-platform system monitoring tool written in Python
+  - For the web view you need **Bottle**
 
 ## Getting Started
 

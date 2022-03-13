@@ -20,7 +20,7 @@ My configuration files
 - xclip
 - xbindkeys
 - ZSH Themes
-  - [typewritten](https://github.com/reobin/typewritten)
+  - [typewritten](https://github.com/reobin/typewritten)  **Actually Usign**
   - [powerlevel10k](https://github.com/romkatv/powerlevel10k)
   - [spaceship-prompt](https://github.com/spaceship-prompt/spaceship-prompt)
 - [Glances](https://nicolargo.github.io/glances/): Glances is a cross-platform system monitoring tool written in Python

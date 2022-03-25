@@ -57,3 +57,10 @@ My configuration files
 ## TBD
 
 - Configure glances (triggers for load notification) https://glances.readthedocs.io/en/latest/config.html
+
+
+[exa](https://the.exa.website/)
+
+[doitlive](https://doitlive.readthedocs.io/en/stable/)
+
+[explainshell](https://explainshell.com/)

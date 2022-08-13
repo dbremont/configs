@@ -12,10 +12,10 @@
         "interfaceType": "XRecord",
         "undoUsingBackspace": true,
         "windowDefaultSize": [
-            1920,
-            1080
+            1330,
+            732
         ],
-        "hPanePosition": 480,
+        "hPanePosition": 331,
         "columnWidths": [
             150,
             50,

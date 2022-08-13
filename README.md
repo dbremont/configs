@@ -9,12 +9,22 @@ My configuration files
 - [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
 - [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language
 - [ohmyzsh](https://ohmyz.sh/): Unleash your terminal like  never before.
-  - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions): Fish-like autosuggestions for zsh
-  - [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
-- [mcfly](https://github.com/cantino/mcfly): Fly through your shell history (ctrl-r)
+  - git
+  - autojump
+  - colored-man-pages
+  - zsh-autosuggestions
+  - vi-mode
+  - fzf
 - [rg](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern while respecting your gitignore
 - [exa](https://the.exa.website/): A modern replacement for ls
 - xclip
+- xbindkeys
+- ZSH Themes
+  - [typewritten](https://github.com/reobin/typewritten)  **Actually Usign**
+  - [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+  - [spaceship-prompt](https://github.com/spaceship-prompt/spaceship-prompt)
+- [Glances](https://nicolargo.github.io/glances/): Glances is a cross-platform system monitoring tool written in Python
+  - For the web view you need **Bottle**
 
 ## Getting Started
 
@@ -42,3 +52,15 @@ My configuration files
 - [anishathalye/dotfiles](https://github.com/anishathalye/dotfiles)
 - [cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
 - [Dotfiles](https://gitlab.com/dwt1/dotfiles)
+- [Awesome ZSH Plugisn](https://github.com/unixorn/awesome-zsh-plugins)
+
+## TBD
+
+- Configure glances (triggers for load notification) https://glances.readthedocs.io/en/latest/config.html
+
+
+[exa](https://the.exa.website/)
+
+[doitlive](https://doitlive.readthedocs.io/en/stable/)
+
+[explainshell](https://explainshell.com/)

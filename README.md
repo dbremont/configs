@@ -25,6 +25,11 @@ My configuration files
   - [spaceship-prompt](https://github.com/spaceship-prompt/spaceship-prompt)
 - [Glances](https://nicolargo.github.io/glances/): Glances is a cross-platform system monitoring tool written in Python
   - For the web view you need **Bottle**
+- neovim
+- git
+- ssh (client) / openssh-server (server)
+- openssl
+- 
 
 ## Getting Started
 

@@ -38,6 +38,9 @@ My configuration files
 - ln -s $HOME/configs/env/.env $HOME/.env
 - touch $HOME/.env_local
 
+- Adding zsh as the default shell: chsh -s /bin/zsh
+  - To see more https://www.tecmint.com/change-a-users-default-shell-in-linux/
+
 ---
 
 - ln -s $HOME/configs/shell/.config/vim/.vimrc  $HOME/.vimrc

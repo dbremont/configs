@@ -15,7 +15,6 @@ My configuration files
   - zsh-autosuggestions
   - vi-mode
   - fzf
-- [rg](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern while respecting your gitignore
 - [exa](https://the.exa.website/): A modern replacement for ls
 - xclip
 - xbindkeys

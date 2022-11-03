@@ -21,8 +21,6 @@ My configuration files
   - vi-mode
   - fzf
 - [exa](https://the.exa.website/): A modern replacement for ls
-- [Glances](https://nicolargo.github.io/glances/): Glances is a cross-platform system monitoring tool written in Python
-  - For the web view you need **Bottle**
 - git
 - ssh (client) / openssh-server (server)
 - openssl

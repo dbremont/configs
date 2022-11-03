@@ -1,6 +1,11 @@
 # configs
 My configuration files
 
+![Demostracion](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)
+
+- kitty (terminal emulator), zsh (interpreter)
+- `fzf`, `tldr` pages, `ctlr + r` (mcfly), `j` (autojump)
+
 ## Tools
 
 - [kitty](https://sw.kovidgoyal.net/kitty/): The fast, feature-rich, GPU based terminal emulator
@@ -43,13 +48,6 @@ My configuration files
 
 - ln -s $HOME/configs/shell/.config/vim/.vimrc  $HOME/.vimrc
 - In vim `:PluginInstall` to install the plugings
-
-## Demostration
-
-- kitty (terminal emulator), zsh (interpreter)
-- `fzf`, `tldr` pages, `ctlr + r` (mcfly), `j` (autojump)
-
-![Demostracion](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)
 
 ## Sources
 

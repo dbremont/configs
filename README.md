@@ -16,36 +16,35 @@ My configuration files
   - vi-mode
   - fzf
 - [exa](https://the.exa.website/): A modern replacement for ls
-- xclip
-- xbindkeys
-- ZSH Themes
-  - [typewritten](https://github.com/reobin/typewritten)  **Actually Usign**
-  - [powerlevel10k](https://github.com/romkatv/powerlevel10k)
-  - [spaceship-prompt](https://github.com/spaceship-prompt/spaceship-prompt)
 - [Glances](https://nicolargo.github.io/glances/): Glances is a cross-platform system monitoring tool written in Python
   - For the web view you need **Bottle**
-- neovim
 - git
 - ssh (client) / openssh-server (server)
 - openssl
-- 
+- xclip
+- xbindkeys
+- [exa](https://the.exa.website/)
+- [doitlive](https://doitlive.readthedocs.io/en/stable/)
+- [explainshell](https://explainshell.com/)
+
 
 ## Getting Started
 
 - ln -s $HOME/configs/shell/.config/zsh/.zshrc $HOME/.zshrc
 - ln -s $HOME/configs/env/.aliases $HOME/.aliases
 - ln -s $HOME/configs/env/.env $HOME/.env
-- touch $HOME/.env_local
+- touch $HOME/.env-local
 
-- Adding zsh as the default shell: chsh -s /bin/zsh
-  - To see more https://www.tecmint.com/change-a-users-default-shell-in-linux/
+### On Chaging the default logging shell
 
----
+[chsh -s /bin/zsh](https://www.tecmint.com/change-a-users-default-shell-in-linux/)
+
+### On vim Configuration
 
 - ln -s $HOME/configs/shell/.config/vim/.vimrc  $HOME/.vimrc
 - In vim `:PluginInstall` to install the plugings
 
-## Demostracion
+## Demostration
 
 - kitty (terminal emulator), zsh (interpreter)
 - `fzf`, `tldr` pages, `ctlr + r` (mcfly), `j` (autojump)
@@ -60,14 +59,3 @@ My configuration files
 - [cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
 - [Dotfiles](https://gitlab.com/dwt1/dotfiles)
 - [Awesome ZSH Plugisn](https://github.com/unixorn/awesome-zsh-plugins)
-
-## TBD
-
-- Configure glances (triggers for load notification) https://glances.readthedocs.io/en/latest/config.html
-
-
-[exa](https://the.exa.website/)
-
-[doitlive](https://doitlive.readthedocs.io/en/stable/)
-
-[explainshell](https://explainshell.com/)

@@ -47,7 +47,7 @@ My configuration files
 - ln -s $HOME/configs/shell/.config/vim/.vimrc  $HOME/.vimrc
 - In vim `:PluginInstall` to install the plugings
 
-## Sources
+## References
 
 - [jonhoo/configs](https://github.com/jonhoo/configs)
 - [JJGO/dotfiles](https://github.com/JJGO/dotfiles)

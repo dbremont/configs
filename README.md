@@ -29,7 +29,7 @@ My configuration files
 - [exa](https://the.exa.website/)
 - [doitlive](https://doitlive.readthedocs.io/en/stable/)
 - [explainshell](https://explainshell.com/)
-
+- [neovim](https://neovim.io/)
 
 ## Getting Started
 

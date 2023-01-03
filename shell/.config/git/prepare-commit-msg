@@ -1,0 +1,14 @@
+#!/bin/bash 
+
+## Remove the previous commit template from ~./git/configs
+## Add this to the global commit messages.
+
+ORIG_MSG_FILE="$1"
+TICKETNO=`git branch | grep '^\*' | cut -b3-`
+
+echo "type(scope, $TICKETNO): msg
+
+body? optional
+
+Fix: $TICKETNO
+" > $ORIG_MSG_FILE

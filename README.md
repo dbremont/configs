@@ -9,7 +9,7 @@ My configuration files
 ## Tools
 
 - [kitty](https://sw.kovidgoyal.net/kitty/): The fast, feature-rich, GPU based terminal emulator
-- [autojump](https://github.com/wting/autojump): A cd command that learns - easily navigate directories from the command line
+- [zoxide](https://github.com/ajeetdsouza/zoxide) / Alternative to autojump.
 - [tldr pages](https://tldr.sh/): Simplified and community-driven man pages
 - [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
 - [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language
@@ -30,6 +30,11 @@ My configuration files
 - [doitlive](https://doitlive.readthedocs.io/en/stable/)
 - [explainshell](https://explainshell.com/)
 - [neovim](https://neovim.io/)
+- tmux (optional)
+- make
+- ninja
+- gcc
+- pkg-configs
 
 ## Getting Started
 

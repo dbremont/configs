@@ -44,6 +44,4 @@ My configuration files
 - [jonhoo/configs](https://github.com/jonhoo/configs)
 - [JJGO/dotfiles](https://github.com/JJGO/dotfiles)
 - [anishathalye/dotfiles](https://github.com/anishathalye/dotfiles)
-- [cirosantilli/dotfiles](https://github.com/cirosantilli/dotfiles)
 - [Dotfiles](https://gitlab.com/dwt1/dotfiles)
-- [Awesome ZSH Plugisn](https://github.com/unixorn/awesome-zsh-plugins)

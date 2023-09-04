@@ -1,23 +1,17 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Environment Setup
-if [ -f ~/.env ]; then
-    source ~/.env
-fi
-
-# ALIASES
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
-fi
-
-# LOCAL ENV
-if [ -f ~/.local-env ]; then
-    source ~/.local-env
-fi
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Functions
-source ~/configs/shell/functions.sh
+source ~/configs/scripts/functions.sh
+
+# Environment
+source .env
+
+# Aliases
+source .aliases
+
+# Local Environment
+source ~/.local-env
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

@@ -6,6 +6,12 @@ My configuration files
 - kitty (terminal emulator), zsh (interpreter)
 - `fzf`, `tldr` pages, `ctlr + r`, `j` (autojump)
 
+```bash
+## https://www.tecmint.com/change-a-users-default-shell-in-linux/
+chsh -s /bin/zsh
+chmod +x install uninstall
+```
+
 ## Tools
 
 - [kitty](https://sw.kovidgoyal.net/kitty/): The fast, feature-rich, GPU based terminal emulator

@@ -1,2 +1,10 @@
 #!/usr/bin/env zsh
 
+## https://www.tecmint.com/change-a-users-default-shell-in-linux/
+chsh -s /bin/zsh
+
+CONFIGS_PATH=$(pwd)
+
+ln -s $CONFIGS_PATH/shell/.config/zsh/.zshrc $HOME/.zshrc
+
+ln -s $CONFIGS_PATH/env/.aliases $HOME/.aliases

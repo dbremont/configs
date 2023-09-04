@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-for f in *.eml1; do
-    mv -- "$f" "${f%%.eml1}"
-done

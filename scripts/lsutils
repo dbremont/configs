@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-echo 'ask - prototype questions/answers tool.'
-echo 'ct - clean the trash can'
-echo 'sbiblos -  serve mi library'
-echo 'task   - task <name> <time in seconds>'
-echo 'today  - print year-month-day'
-echo 'eml  - extarct content from eml files and write them in salida, in $(pwd)'
-echo 'utils  - list all of my little utilities'

@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-echo 'ask'
-
-echo $1
-echo $2

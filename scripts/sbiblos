@@ -1,9 +1,0 @@
-#!/usr/bin/bash
-
-: '
-- sbiblos: python http.server  /home/dbremont/Documents/Library Index
-'
-
-echo 'Serving /home/dbremont/Documents/Library Index':
-
-python3 -m http.server --directory "/home/dbremont/Documents/Library Index"

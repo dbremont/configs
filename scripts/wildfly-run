@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# $fullLogFile (how this works)
-# nohup (hangup) how signal works.
-nohup $WILDFLY_HOME/bin/standalone.sh --debug -b 0.0.0.0 &> ~/Documents/.logs/wildflylog &

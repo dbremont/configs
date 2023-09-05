@@ -44,6 +44,10 @@ chmod +x install uninstall
 - curl
 - net-tools
 - youtube-dl
+- tree
+- findutils - xargs
+- 
+- ...
 
 ## References
 

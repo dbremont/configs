@@ -4,17 +4,13 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Functions
 source ~/configs/scripts/functions.sh
 
-# Environment
+# General Environment
 source ~/configs/.config/zsh/.env
-
-# Aliases
 source ~/configs/.config/zsh/.aliases
 
 # Local Environment
 source ~/configs/local/.env
-
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+source ~/configs/local/.aliases
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"

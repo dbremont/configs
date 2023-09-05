@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
 
-rm $HOME/.zshrc
-rm $HOME/.aliases
-rm $HOME/.env
+rm --force $HOME/.zshrc
+rm --force  $HOME/.aliases

@@ -1,7 +1,3 @@
 #!/usr/bin/env zsh
 
-CONFIGS_PATH=~/config
-
-ln -s $CONFIGS_PATH/.config/zsh/.zshrc $HOME/.zshrc
-
-ln -s $CONFIGS_PATH/.config/zsh/.aliases $HOME/.aliases
+ln -s $HOME/configs/.config/zsh/.zshrc $HOME/.zshrc

@@ -50,10 +50,7 @@ alias code='code-insiders'
 alias spell='aspell check --dont-backup'
 alias grepc="grep -P --color=always" #Color grep
 
-alias printpath='echo $PATH | sed "s/:/\\n/g"'
-# Other
-# alias matlabc='matlab -nodesktop -nosplash'
-  # Create separator using current columns
+# Create separator using current columns
 alias sep='tput cols | python -c "import sys; print(\"=\"*int(sys.stdin.read().strip()))"'
 alias rg="sep; rg -u"
 

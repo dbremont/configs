@@ -1,9 +1,12 @@
-[user]
-	email = dvictoriano@hacienda.gov.do
-	name = dvictoriano
 [core]
 	autocrlf = input
 	editor = vim
 [commit]
-	template=/home/dbremont/configs/shell/.config/git/commit-msg-template
+	template= $(HOME)/configs/.config/git/commit-msg-template
 	status= false
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
+[commit]
+	gpgsign = true

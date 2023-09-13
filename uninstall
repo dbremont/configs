@@ -1,3 +1,4 @@
 #!/usr/bin/env zsh
 
 rm --force $HOME/.zshrc
+rm --force $HOME/.gitconfig

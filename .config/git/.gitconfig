@@ -2,7 +2,7 @@
 	autocrlf = input
 	editor = vim
 [commit]
-	template= $(HOME)/configs/.config/git/commit-msg-template
+	template= ~/configs/.config/git/commit-msg-template
 	status= false
 [gpg]
 	format = ssh

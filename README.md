@@ -46,7 +46,7 @@ chmod +x install uninstall
 - youtube-dl
 - tree
 - findutils - xargs
-- 
+- jq
 - ...
 
 ## References

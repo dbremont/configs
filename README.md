@@ -6,19 +6,13 @@ My configuration files
 - kitty (terminal emulator), zsh (interpreter)
 - `fzf`, `tldr` pages, `ctlr + r`, `j` (autojump)
 
-```bash
-## https://www.tecmint.com/change-a-users-default-shell-in-linux/
-chsh -s /bin/zsh
-chmod +x install uninstall
-```
-
 ## Tools
 
+- [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language
 - [kitty](https://sw.kovidgoyal.net/kitty/): The fast, feature-rich, GPU based terminal emulator
 - [autojump](https://github.com/wting/autojump)
 - [tldr pages](https://tldr.sh/): Simplified and community-driven man pages
 - [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
-- [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language
 - [ohmyzsh](https://ohmyz.sh/): Unleash your terminal like  never before.
   - git
   - autojump
@@ -26,7 +20,7 @@ chmod +x install uninstall
   - zsh-autosuggestions
   - vi-mode
   - fzf
-- git
+- git >? 
 - ssh (client) / openssh-server (server)
 - openssl
 - xclip
@@ -45,9 +39,14 @@ chmod +x install uninstall
 - net-tools
 - youtube-dl
 - tree
-- findutils - xargs
+- findutils
+- xargs
 - jq
-- ...
+- gnupg2
+
+## Configs 
+
+- Default Shell: **chsh -s /bin/zsh**
 
 ## References
 

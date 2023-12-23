@@ -46,6 +46,10 @@ My configuration files
 - jq
 - gnupg2
 - [vscode](https://code.visualstudio.com/docs/?dv=linux64_deb)
+   - C#
+   - Docker
+   - Live Share
+   - Hex Editor
 - [dbeaver](https://dbeaver.io/download/)
 
 ## Configs 

@@ -51,6 +51,7 @@ My configuration files
    - Live Share
    - Hex Editor
 - [dbeaver](https://dbeaver.io/download/)
+-  libnss3-tools (For certutil)
 
 ## Configs 
 

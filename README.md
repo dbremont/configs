@@ -32,7 +32,7 @@ My configuration files
 - make
 - gcc
 - pkg-configs
-- sdkman
+- [sdkman](https://sdkman.io/install)
 - docker
 - discord
 - 1password
@@ -45,6 +45,8 @@ My configuration files
 - xargs
 - jq
 - gnupg2
+- [vscode](https://code.visualstudio.com/docs/?dv=linux64_deb)
+- [dbeaver](https://dbeaver.io/download/)
 
 ## Configs 
 

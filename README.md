@@ -20,6 +20,8 @@ My configuration files
   - zsh-autosuggestions
   - vi-mode
   - fzf
+  - themes
+    - [ultima](https://github.com/egorlem/ultima.zsh-theme)
 - git >? 
 - ssh (client) / openssh-server (server)
 - openssl

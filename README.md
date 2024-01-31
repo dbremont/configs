@@ -52,6 +52,9 @@ My configuration files
    - Hex Editor
 - [dbeaver](https://dbeaver.io/download/)
 -  libnss3-tools (For certutil)
+-  plocate
+   - locate
+   - updatedb   
 
 ## Configs 
 

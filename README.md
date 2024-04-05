@@ -54,7 +54,9 @@ My configuration files
 -  libnss3-tools (For certutil)
 -  plocate
    - locate
-   - updatedb   
+   - updatedb
+ - calendar `sudo apt install ncal`
+ - ...
 
 ## Configs 
 

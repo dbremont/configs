@@ -56,6 +56,7 @@ My configuration files
    - locate
    - updatedb
  - calendar `sudo apt install ncal`
+ - [cloc](https://github.com/AlDanial/cloc?tab=readme-ov-file#install-via-package-manager) - Count Lines of Code
  - ...
 
 ## Configs 

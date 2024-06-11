@@ -58,7 +58,7 @@ My configuration files
  - calendar `sudo apt install ncal`
  - [cloc](https://github.com/AlDanial/cloc?tab=readme-ov-file#install-via-package-manager) - Count Lines of Code
 - **cal**: Display a calendar with the current day highlighted.  Package: ncal.
-
+- [matrix](https://github.com/abishekvashok/cmatrix):  Terminal-based "The Matrix" like implementation.
  - ...
 
 ## Configs 

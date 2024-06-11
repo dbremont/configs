@@ -57,6 +57,8 @@ My configuration files
    - updatedb
  - calendar `sudo apt install ncal`
  - [cloc](https://github.com/AlDanial/cloc?tab=readme-ov-file#install-via-package-manager) - Count Lines of Code
+- **cal**: Display a calendar with the current day highlighted.  Package: ncal.
+
  - ...
 
 ## Configs 

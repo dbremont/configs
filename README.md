@@ -62,6 +62,12 @@ My configuration files
 - btop: ...
 - rofi: ...
 - ...
+- Firefox Extentions
+  - Dark Reader
+  - 1Passport
+  - Gesturify
+  - Vimium
+  - ClearUrls
 
 ## Configs 
 

@@ -68,6 +68,7 @@ My configuration files
   - Gesturify
   - Vimium
   - ClearUrls
+- sqlite3
 
 ## Configs 
 

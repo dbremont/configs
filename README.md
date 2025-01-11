@@ -10,7 +10,9 @@ My configuration files
 
 - [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language
 - [kitty](https://sw.kovidgoyal.net/kitty/): The fast, feature-rich, GPU based terminal emulator
-- [autojump](https://github.com/wting/autojump)
+- Terminal navigation:
+  - [autojump](https://github.com/wting/autojump)
+  - [zoxide](https://github.com/ajeetdsouza/zoxide)
 - [tldr pages](https://tldr.sh/): Simplified and community-driven man pages
 - [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
 - [ohmyzsh](https://ohmyz.sh/): Unleash your terminal like  never before.

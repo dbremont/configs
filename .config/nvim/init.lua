@@ -1,0 +1,1 @@
+require("timestamped_notes").setup()

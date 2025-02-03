@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
 
-ln -s $HOME/configs/.config/zsh/.zshrc $HOME/.zshrc
+ln -s $HOME/configs/.config/zsh/.zshrc     $HOME/.zshrc
 ln -s $HOME/configs/.config/git/.gitconfig $HOME/.gitconfig
+ln -sfn $HOME/configs/.config/nvim         $HOME/.config/nvim

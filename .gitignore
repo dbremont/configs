@@ -1,2 +1,3 @@
 local/
 !local/README.md
+!local/.env

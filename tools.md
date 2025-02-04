@@ -1,49 +1,56 @@
 # Tools
 
-- [kitty](https://sw.kovidgoyal.net/kitty/): The fast, feature-rich, GPU based terminal emulator
-- Terminal navigation:
-  - [autojump](https://github.com/wting/autojump)
-  - [zoxide](https://github.com/ajeetdsouza/zoxide)
-- [tldr pages](https://tldr.sh/): Simplified and community-driven man pages
-- [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
+> ...
 
-- git
-- ssh (client) / openssh-server (server)
-- openssl
+## Terminal
+
+- [kitty](https://sw.kovidgoyal.net/kitty/): The fast, feature-rich, GPU based terminal emulator
+- zsh (interpreter)
+- https://github.com/ohmyzsh/ohmyzsh
+- Terminal navigation: [zoxide](https://github.com/ajeetdsouza/zoxide)
+- [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
 - xclip
-- [doitlive](https://doitlive.readthedocs.io/en/stable/)
-- [explainshell](https://explainshell.com/)
+- [tldr pages](https://tldr.sh/): Simplified and community-driven man pages
+- xargs
+
+## Editors
+
 - [neovim](https://neovim.io/)
-- make
-- gcc
-- pkg-configs
-- [sdkman](https://sdkman.io/install)
-- docker
-- discord
-- 1password
-- vimium
-- curl
-- net-tools
-- youtube-dl
+- [vscode](https://code.visualstudio.com/docs/?dv=linux64_deb)
+  - C#
+  - Docker
+  - Live Share
+  - Hex Editor
+
+## Filesystem
+
 - tree
 - findutils
-- xargs
-- jq
-- gnupg2
+- plocate (locate, updatedb)
 
-- Default Shell: **chsh -s /bin/zsh**
-
-- [dbeaver](https://dbeaver.io/download/)
-- libnss3-tools (For certutil)
-- plocate
-  - locatemhconfig
-  - updatedb- ...
+## Database
 
 - sqlite3
+- [dbeaver](https://dbeaver.io/download/)
 
-- kitty (terminal emulator), zsh (interpreter)
+## Programming
 
-- `fzf`, `tldr` pages, `ctlr + r`, `j` (autojump)
+- gcc
+- pkg-configs
+- Java Version Management: [sdkman](https://sdkman.io/install)
+
+## Build Tools
+
+- make
+
+## Virtualization
+
+- docker
+- qemu
+
+## Configuration Management
+
+- Vagrant
 
 ## Shell
 
@@ -59,6 +66,20 @@
   - [ultima](https://github.com/egorlem/ultima.zsh-theme)
   - [powerline-shell](https://github.com/b-ryan/powerline-shell)
 
+## Networking
+
+- curl
+- net-tools
+- youtube-dl
+- ssh (client) / openssh-server (server)
+
+## Security
+
+- gnupg2
+- openssl
+- 1password
+- libnss3-tools (For certutil)
+
 ## Firefox Extentions
 
 - Dark Reader
@@ -67,10 +88,10 @@
 - Vimium
 - ClearUrls
 
-## VSCode
+## Miscelanea
 
-- [vscode](https://code.visualstudio.com/docs/?dv=linux64_deb)
-- C#
-- Docker
-- Live Share
-- Hex Editor
+- Default Shell: **chsh -s /bin/zsh**
+- (Json Processing): jq
+- (Version Management) git
+- [explainshell](https://explainshell.com/)
+- [doitlive](https://doitlive.readthedocs.io/en/stable/)

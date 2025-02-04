@@ -4,6 +4,8 @@
 
 ![Demo](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)
 
+`fzf`, `tldr` pages, `ctlr + r`, `j` (autojump)
+
 ## 📌 Structure  
 
 > Our configuration system is structured to maintain flexibility and consistency across different environments. We categorize configurations into two main types:

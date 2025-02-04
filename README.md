@@ -4,9 +4,6 @@ My configuration files
 
 ![Demostracion](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)
 
-- kitty (terminal emulator), zsh (interpreter)
-- `fzf`, `tldr` pages, `ctlr + r`, `j` (autojump)
-
 ## Configs
 
 - Default Shell: **chsh -s /bin/zsh**

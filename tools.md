@@ -39,6 +39,10 @@
 
 - sqlite3
 
+- kitty (terminal emulator), zsh (interpreter)
+
+- `fzf`, `tldr` pages, `ctlr + r`, `j` (autojump)
+
 ## Shell
 
 - [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language

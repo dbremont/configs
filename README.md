@@ -4,6 +4,11 @@ My configuration files
 
 ![Demostracion](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)
 
+## Install & Uninstall
+
+- Install  `./scripts/install`
+- Unistall `./scripts/uninstall`
+
 ## Configs
 
 - Default Shell: **chsh -s /bin/zsh**

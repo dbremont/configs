@@ -31,6 +31,8 @@
 - jq
 - gnupg2
 
+- Default Shell: **chsh -s /bin/zsh**
+
 - [dbeaver](https://dbeaver.io/download/)
 - libnss3-tools (For certutil)
 - plocate

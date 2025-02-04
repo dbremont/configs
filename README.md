@@ -1,17 +1,30 @@
-# configs
+# 📂 configs
 
-My configuration files
+> This repository contains my personal configuration files, organized for easy management and deployment across multiple systems.  
 
-![Demostracion](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)
+![Demo](https://raw.githubusercontent.com/dbremont/dbremont/main/docs/demostracion.png)
 
-## Install & Uninstall
+## 📌 Structure  
 
-- Install  `./scripts/install`
-- Unistall `./scripts/uninstall`
+> Our configuration system is structured to maintain flexibility and consistency across different environments. We categorize configurations into two main types:
 
-## Configs
+- **global/** – Shared configurations applicable across all environments.
+- **local/** – Machine-specific settings tailored to individual workstations.
+- **bin/** – Custom scripts and executable utilities to enhance workflow.
 
-- Default Shell: **chsh -s /bin/zsh**
+## ⚙️ Usage  
+
+> Leverage **GNU Stow** or manual symlinking to apply configurations efficiently.  
+
+```bash
+stow global  # Apply global configs
+stow local   # Apply local workstation-specific configs
+stow bin     # Apply custom scripts
+```
+
+## Feature Work
+
+- Third-party tools to "handle" config file installation like (GNU Stow, ..).
 
 ## References
 

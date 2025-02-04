@@ -19,14 +19,25 @@
 > Leverage **GNU Stow** or manual symlinking to apply configurations efficiently.  
 
 ```bash
-stow global  # Apply global configs
-stow local   # Apply local workstation-specific configs
-stow bin     # Apply custom scripts
+cd ~ && git clone https://github.com/dbremont/configs
+stow -Sv <group>
 ```
 
-## Feature Work
+```bash
+## Global
+cd global
 
-- Third-party tools to "handle" config file installation like (GNU Stow, ..).
+stow -v -R editor  --target=$HOME
+stow -v -R git     --target=$HOME
+stow -v -R python  --target=$HOME/config
+stow -v -R shell   --target=$HOME
+```
+
+```bash
+## Local
+cd local
+
+```
 
 ## References
 
@@ -34,3 +45,4 @@ stow bin     # Apply custom scripts
 - [JJGO/dotfiles](https://github.com/JJGO/dotfiles)
 - [anishathalye/dotfiles](https://github.com/anishathalye/dotfiles)
 - [Dotfiles](https://gitlab.com/dwt1/dotfiles)
+- [o-y dotfiles](https://github.com/o-y/dotfiles/tree/main)

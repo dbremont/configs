@@ -1,8 +1,8 @@
 [core]
 	autocrlf = input
-	editor = vim
+	editor = nvim
 [commit]
-	template= ~/configs/.config/git/commit-msg-template
+	template= ~/configs/global/git/commit-msg-template
 	status= false
 [gpg]
 	format = ssh

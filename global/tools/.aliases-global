@@ -1,0 +1,137 @@
+# better defaults
+alias_if_exists 'diff' 'colordiff'
+alias_if_exists 'ag' 'rg'
+alias_if_exists 'vim' 'nvim'
+alias_if_exists 'fdupes' 'jdupes'
+
+## cd & ls
+if command -v exa > /dev/null; then
+  alias ls=exa
+  alias l="exa -1"
+  alias la="exa -a"
+fi
+
+## jupyter
+alias jpc="jupyter console"
+alias jpco="jupyter nbconvert"
+alias jpn="jupyter notebook"
+alias jpn-b="jupyter notebook --no-browser"
+
+# youtube-dl
+alias yt="youtube-dl"
+alias yta="youtube-dl --extract-audio --audio-format mp3"
+alias ytad="youtube-dl --extract-audio --audio-format mp3 --write-description --add-metadata --embed-thumbnail --write-info-json"
+alias gdl="gallery-dl"
+
+# antlr
+alias antlr4='java -jar /usr/local/lib/antlr-4.9.2-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
+
+# maven
+alias mci="mvn clean install"
+alias mi="mvn install"
+alias mc="mvn clean"
+alias mid="mvn install -Pdeploy"
+
+# playerctl
+alias play='playerctl play'
+alias pause='playerctl pause'
+			
+# JDK Mission Control
+alias jmc=$HOME/Apps/jmc-8.0.1/jmc/jmc
+
+## network
+alias my-ip="curl ipinfo.io/ip 2> /dev/null"
+
+## code-insiders
+alias code='code-insiders'
+
+# alias tb="nc termbin.com 9999"
+alias spell='aspell check --dont-backup'
+alias grepc="grep -P --color=always" #Color grep
+
+# Create separator using current columns
+alias sep='tput cols | python -c "import sys; print(\"=\"*int(sys.stdin.read().strip()))"'
+alias rg="sep; rg -u"
+
+alias tolower="tr 'A-Z' 'a-z'"
+
+stt_both  () { setTerminalText 0 $@; }
+stt_tab   () { setTerminalText 1 $@; }
+stt_title () { setTerminalText 2 $@; }
+
+tn () { stt_tab $@ && tmux new -s $@; }
+ta () { stt_tab $@ && tmux a -t $@; }
+
+# fzf
+if command -v fzf > /dev/null; then
+  function fzf-history() {
+      local tac
+      if which tac > /dev/null; then
+          tac="tac"
+      else
+          tac="tail -r"
+      fi
+      BUFFER=$(\history -n 1 | fzf)
+      CURSOR=$#BUFFER
+  }
+  # zle -N fzf-history
+  # bindkey '^r' fzf-history
+
+  fh() {
+    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+  }
+
+  # fkill - kill process
+  fkill() {
+    local pid
+    pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+    if [ "x$pid" != "x" ]
+    then
+      echo $pid | xargs kill -${1:-9}
+    fi
+  }
+
+  v() {
+    local file
+    if [[ -f $1 ]]; then
+        vim $1
+    else
+        file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "${file}" || return 1
+    fi
+  }
+
+  if command -v subl > /dev/null; then
+    u() {
+      local file
+      file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && subl "${file}" || return 1
+    }
+  fi
+
+  #less on fuzzy find
+  fl() {
+    less $(fzf)
+  }
+
+fi
+
+## Ripgrep-all
+
+if command -v rga > /dev/null; then
+    alias rgim="rga --rga-adapters=+tesseract -j4"
+    # Interactive rga
+    rga-fzf() {
+        RG_PREFIX="rga --files-with-matches"
+        local file
+        file="$(
+            FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+                fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+                    --phony -q "$1" \
+                    --bind "change:reload:$RG_PREFIX {q}" \
+                    --preview-window="70%:wrap"
+        )" &&
+        echo "opening $file" &&
+        xdg-open "$file"
+    }
+fi

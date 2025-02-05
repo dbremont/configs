@@ -74,6 +74,10 @@
 - youtube-dl
 - ssh (client) / openssh-server (server)
 
+## Monitoring
+
+- btop
+
 ## Security
 
 - gnupg2

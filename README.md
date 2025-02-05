@@ -27,9 +27,8 @@ stow -Sv <group>
 ## Global
 cd global
 
-stow -v -R editor  --target=$HOME
-stow -v -R git     --target=$HOME
-stow -v -R python  --target=$HOME/config
+stow -v -R editor  --target=$HOME/.config
+stow -v -R python  --target=$HOME/.config
 stow -v -R shell   --target=$HOME
 ```
 

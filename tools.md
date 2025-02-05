@@ -13,6 +13,9 @@
 - [tldr pages](https://tldr.sh/): Simplified and community-driven man pages
 - xargs
 - [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html)
+- zsh-autocomplete
+- https://github.com/nvbn/thefuck
+
 
 ## Editors
 
@@ -26,6 +29,7 @@
 ## Filesystem
 
 - tree
+- fswatch
 - findutils
 - plocate (locate, updatedb)
 
@@ -37,6 +41,7 @@
 ## Programming
 
 - gcc
+- pipx
 - pkg-configs
 - Java Version Management: [sdkman](https://sdkman.io/install)
 

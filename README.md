@@ -14,6 +14,12 @@
 - **local/** – Machine-specific settings tailored to individual workstations.
 - **bin/** – Custom scripts and executable utilities to enhance workflow.
 
+## **🚀 Installation Guide**  
+
+```bash
+- ./bootstrap.zsh  # 🛠️ Entry point (Installer)
+```  
+
 ## ⚙️ Usage  
 
 > Leverage **GNU Stow** or manual symlinking to apply configurations efficiently.  

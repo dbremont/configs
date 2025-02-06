@@ -13,9 +13,21 @@
 - [tldr pages](https://tldr.sh/): Simplified and community-driven man pages
 - xargs
 - [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html)
-- zsh-autocomplete
+
 - https://github.com/nvbn/thefuck
 
+- [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language
+- [ohmyzsh](https://ohmyz.sh/): Unleash your terminal like  never before.
+  - git
+  - colored-man-pages
+  - zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
+  - zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions
+  - zsh-autocomplete
+  - vi-mode
+  - fzf
+  
+- themes
+  - ...
 
 ## Editors
 
@@ -58,20 +70,6 @@
 
 - Vagrant
 
-## Shell
-
-- [zsh](https://www.zsh.org/): Zsh is a shell designed for interactive use, although it is also a powerful scripting language
-- [ohmyzsh](https://ohmyz.sh/): Unleash your terminal like  never before.
-  - git
-  - autojump
-  - colored-man-pages
-  - zsh-autosuggestions
-  - vi-mode
-  - fzf
-- themes
-  - [ultima](https://github.com/egorlem/ultima.zsh-theme)
-  - [powerline-shell](https://github.com/b-ryan/powerline-shell)
-
 ## Networking
 
 - curl
@@ -105,3 +103,7 @@
 - (Version Management) git
 - [explainshell](https://explainshell.com/)
 - [doitlive](https://doitlive.readthedocs.io/en/stable/)
+
+## References
+
+- []()

@@ -68,6 +68,14 @@ function install_dependencies() {
 
 install_dependencies
 
+## Set Default Shell
+chsh -s $(which zsh)
+
+## ZSH Plugins
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+
 echo "[~] everything successfully (probably) installed and configured! :)"
 echo "[?] press any key to reload zsh..."
 read -r

@@ -25,6 +25,8 @@
   - zsh-autocomplete
   - vi-mode
   - fzf
+
+- https://github.com/fastfetch-cli/fastfetch
   
 - themes
   - ...

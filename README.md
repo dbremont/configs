@@ -33,8 +33,7 @@ stow -Sv <group>
 ## Global
 cd global
 
-stow -v -R editor  --target=$HOME/.config
-stow -v -R python  --target=$HOME/.config
+stow -v -R config  --target=$HOME/.config
 stow -v -R shell   --target=$HOME
 ```
 

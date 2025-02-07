@@ -16,12 +16,17 @@ dependencies_linux=(
   "btop" "sudo apt install btop"
   ## "pipx" "sudo apt install pipx"
   "c++" "sudo apt install build-essential"
+  "zoxide" "sudo apt install zoxide"
 )
 
 dependencies_common=(
   ## -- dependencies on pipx --
   ## "fuck:pipx" "pipx install --fetch-missing-python --python "3.11" thefuck" # https://github.com/nvbn/thefuck/issues/1444
 )
+
+## ZSH Plugins
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 ################ Install dependencies ################
 echo "[~] installing required dependencies...";
@@ -70,11 +75,6 @@ install_dependencies
 
 ## Set Default Shell
 chsh -s $(which zsh)
-
-## ZSH Plugins
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
 
 echo "[~] everything successfully (probably) installed and configured! :)"
 echo "[?] press any key to reload zsh..."

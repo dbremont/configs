@@ -12,3 +12,6 @@
 	gpgsign = true
 [user]
 	email = darlynvictoriano@gmail.com
+[http]
+	postBuffer = 524288000
+	maxRequestBuffer = 1048576000

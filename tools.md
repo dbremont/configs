@@ -58,6 +58,7 @@
 - pipx
 - pkg-configs
 - Java Version Management: [sdkman](https://sdkman.io/install)
+- [Rust](https://www.rust-lang.org/tools/install)
 
 ## Build Tools
 

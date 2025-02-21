@@ -31,6 +31,18 @@
 - themes
   - ...
 
+## Programming
+
+- gcc
+- pipx
+- pkg-configs
+- Java Version Management: [sdkman](https://sdkman.io/install)
+- [Rust](https://www.rust-lang.org/tools/install)
+
+## Language Servers
+
+- [bash-language-server](https://github.com/bash-lsp/bash-language-server)
+
 ## Editors
 
 - [neovim](https://neovim.io/)
@@ -51,14 +63,6 @@
 
 - sqlite3
 - [dbeaver](https://dbeaver.io/download/)
-
-## Programming
-
-- gcc
-- pipx
-- pkg-configs
-- Java Version Management: [sdkman](https://sdkman.io/install)
-- [Rust](https://www.rust-lang.org/tools/install)
 
 ## Build Tools
 

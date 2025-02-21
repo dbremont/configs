@@ -19,3 +19,40 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+	{
+		'neovim/nvim-lspconfig',
+		config = function()
+			require("lspconfig").bashls.setup({})
+		end
+	},
+	{
+		"hrsh7th/nvim-cmp",
+		-- load cmp on InsertEnter
+		event = "InsertEnter",
+		-- these dependencies will only be loaded when cmp loads
+		-- dependencies are always lazy-loaded unless specified otherwise
+		dependencies = {
+			'neovim/nvim-lspconfig',
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+		},
+		config = function()
+			local cmp = require("cmp")
+			cmp.setup({
+				mapping = {
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+				},
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "buffer" },
+					{ name = "path" },
+				},
+			})
+		end
+	}
+})

@@ -2,3 +2,5 @@ local/
 !local/README.md
 !local/local-env
 !local/.env
+**/nvim/lazy-lock.json
+

@@ -13,3 +13,7 @@ source $GLOBAL_CONFIG_PATH/global/tools/global-aliases
 
 # Local Environment
 source $GLOBAL_CONFIG_PATH/local/local-env
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/dvictoriano/.lmstudio/bin"
+# End of LM Studio CLI section
+

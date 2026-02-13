@@ -18,6 +18,10 @@
 
 ```bash
 - ./bootstrap.zsh  # 🛠️ Entry point (Installer)
+
+- rm "$HOME/.config/Code - Insiders/User/keybindings.json"
+- ln -s $HOME/configs/global/config/vscode/keybindings.json "$HOME/.config/Code - Insiders/User/keybindings.json"  # VS Code Insiders.
+
 ```  
 
 ## ⚙️ Usage  
@@ -42,6 +46,10 @@ stow -v -R shell   --target=$HOME
 cd local
 
 ```
+
+## Notes
+
+- It is assumed that the **configuration** path is `$HOME/configs`. Refer to the **Git configuration** file for the explicit path reference.
 
 ## References
 

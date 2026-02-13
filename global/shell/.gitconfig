@@ -2,12 +2,13 @@
 	autocrlf = input
 	editor = nvim
 [commit]
-	template= ~/configs/global/git/commit-msg-template
+	template= $HOME/configs/global/tools/commit-msg-template
 	status= false
 [gpg]
 	format = ssh
 [gpg "ssh"]
 	program = /opt/1Password/op-ssh-sign
+	allowedSignersFile = $HOME/configs/local/allowed_signers
 [commit]
 	gpgsign = true
 [user]

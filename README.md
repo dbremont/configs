@@ -20,7 +20,11 @@
 - ./bootstrap.zsh  # 🛠️ Entry point (Installer)
 
 - rm "$HOME/.config/Code - Insiders/User/keybindings.json"
-- ln -s $HOME/configs/global/config/vscode/keybindings.json "$HOME/.config/Code - Insiders/User/keybindings.json"  # VS Code Insiders.
+- ln -s $HOME/configs/global/config/vscode/keybindings.json "$HOME/.config/Code - Insiders/User/keybindings.json"  # VS Code 
+- rm -rf $HOME/.config/kitty
+- ln -s "$HOME/configs/global/config/kitty" "$HOME/.config/kitty"
+
+Insiders.
 
 ```  
 

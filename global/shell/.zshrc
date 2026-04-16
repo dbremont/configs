@@ -10,6 +10,7 @@ source $GLOBAL_CONFIG_PATH/bin/functions
 # General Environment
 source $GLOBAL_CONFIG_PATH/global/tools/global-env
 source $GLOBAL_CONFIG_PATH/global/tools/global-aliases
+source $GLOBAL_CONFIG_PATH/global/tools/zsh-key-maps
 
 # Local Environment
 source $GLOBAL_CONFIG_PATH/local/local-env

@@ -14,5 +14,19 @@
   {
     "key": "alt+right",
     "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+enter ctrl+enter",
+    "command": "sqlite.runDocumentQuery",
+    "when": "editorLangId =~ /(sql|sqlite)/"
+  },
+  {
+    "key": "ctrl+shift+q",
+    "command": "-sqlite.runDocumentQuery",
+    "when": "editorLangId =~ /(sql|sqlite)/"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "sqlite.runSelectedQuery"
   }
 ]

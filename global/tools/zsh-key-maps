@@ -1,0 +1,4 @@
+# See bind keys in zsh - bindkey
+
+zle -N edit-command-line
+bindkey '^xe' edit-command-line

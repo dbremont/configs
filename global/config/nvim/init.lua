@@ -75,63 +75,86 @@ require("lazy").setup({
 	--------------------------------------------------------------------------
 	-- Treesitter
 	--------------------------------------------------------------------------
-
 	{
-		"nvim-treesitter/nvim-treesitter",
+	"nvim-treesitter/nvim-treesitter",
 
-		build = ":TSUpdate",
+	build = ":TSUpdate",
 
-		event = { "BufReadPost", "BufNewFile" },
+	event = { "BufReadPost", "BufNewFile" },
 
-		config = function()
+	config = function()
 
-			require("nvim-treesitter.configs").setup({
+		------------------------------------------------------------------
+		-- .prs filetype detection
+		------------------------------------------------------------------
 
-				highlight = {
-					enable = true,
+		vim.filetype.add({
+			extension = {
+				prs = "prs",
+			},
+		})
+
+		------------------------------------------------------------------
+		-- PRS parser registration
+		------------------------------------------------------------------
+
+		local parser_config =
+			require("nvim-treesitter.parsers")
+			.get_parser_configs()
+
+		parser_config.prs = {
+
+			install_info = {
+				url = "~/Code/prs",
+
+				files = {
+					"src/parser.c",
 				},
 
-				indent = {
-					enable = true,
-				},
+				-- add this if scanner.c exists
+				-- "src/scanner.c",
 
-				ensure_installed = {
-					"bash",
-					"lua",
-					"json",
-					"yaml",
-					"markdown",
-				},
-			})
+				branch = "main",
 
-			------------------------------------------------------------------
-			-- PRS parser registration
-			------------------------------------------------------------------
+				generate_requires_npm = false,
+				requires_generate_from_grammar = false,
+			},
 
-			local parser_config =
-				require("nvim-treesitter.parsers")
-				.get_parser_configs()
+			filetype = "prs",
+		}
 
-			parser_config.prs = {
+		------------------------------------------------------------------
+		-- Treesitter setup
+		------------------------------------------------------------------
 
-				install_info = {
-					url = "~/Code/prs",
-					files = { "src/parser.c" },
-					branch = "main",
-				},
+		require("nvim-treesitter.configs").setup({
 
-				filetype = "prs",
-			}
+			ensure_installed = {
+				"bash",
+				"lua",
+				"json",
+				"yaml",
+				"markdown",
+			},
 
-			------------------------------------------------------------------
-			-- .prs filetype detection
-			------------------------------------------------------------------
+			highlight = {
+				enable = true,
 
-			vim.filetype.add({
-				extension = {
-					prs = "prs",
-				},
-			})
-		end,
-	},
+				-- enable prs highlighting
+				additional_vim_regex_highlighting = false,
+			},
+
+			indent = {
+				enable = true,
+			},
+		})
+
+		------------------------------------------------------------------
+		-- register parser manually
+		------------------------------------------------------------------
+
+		vim.treesitter.language.register("prs", "prs")
+	end,
+   },		
+		
 })

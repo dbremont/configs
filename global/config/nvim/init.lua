@@ -69,17 +69,18 @@ require("lazy").setup({
 			})
 		end
 	},
+	
 	--------------------------------------------------------------------------
 	-- Treesitter
 	--------------------------------------------------------------------------
 	{
 	    "nvim-treesitter/nvim-treesitter",
 	    build = ":TSUpdate",
-	    event = "VeryLazy",
+	    -- event = "VeryLazy",   -- REMOVED: causes module not found error
 	    config = function()
 	        vim.filetype.add({ extension = { prs = "prs" } })
 	
-	        -- Ensure the parsers table exists, then add your custom parser
+	        -- Safely add custom parser
 	        local parsers = require("nvim-treesitter.parsers")
 	        if not parsers.parsers then
 	            parsers.parsers = {}

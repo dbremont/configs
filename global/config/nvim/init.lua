@@ -126,7 +126,6 @@ require("lazy").setup({
 		------------------------------------------------------------------
 
 		require("nvim-treesitter.configs").setup({
-
 			ensure_installed = {
 				"bash",
 				"lua",
@@ -134,14 +133,11 @@ require("lazy").setup({
 				"yaml",
 				"markdown",
 			},
-
 			highlight = {
 				enable = true,
-
 				-- enable prs highlighting
 				additional_vim_regex_highlighting = false,
 			},
-
 			indent = {
 				enable = true,
 			},

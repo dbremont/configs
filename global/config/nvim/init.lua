@@ -1,5 +1,3 @@
-require("timestamped_notes").setup()
-
 -------------------------------------------------------------------------------
 --
 -- plugin configuration

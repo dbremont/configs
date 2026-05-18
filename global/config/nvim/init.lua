@@ -74,45 +74,8 @@ require("lazy").setup({
 	-- Treesitter
 	--------------------------------------------------------------------------
 	{
-	    "nvim-treesitter/nvim-treesitter",
-	    build = ":TSUpdate",
-	    lazy = false,
-	    priority = 1000,   -- load very early
-	    config = function()
-	        -- Delay the setup until after lazy.nvim has processed everything
-	        vim.defer_fn(function()
-	            -- Ensure the plugin is actually loaded (safety check)
-	            local ok, configs = pcall(require, "nvim-treesitter.configs")
-	            if not ok then
-	                vim.notify("nvim-treesitter not loaded yet, retrying...", vim.log.levels.WARN)
-	                return
-	            end
-	
-	            -- Standard setup
-	            configs.setup({
-	                ensure_installed = { "bash", "lua", "json", "yaml", "markdown" },
-	                highlight = { enable = true },
-	                indent = { enable = true },
-	            })
-	
-	            -- Register custom parser safely
-	            vim.filetype.add({ extension = { prs = "prs" } })
-	            local parsers = require("nvim-treesitter.parsers")
-	            if not parsers.parsers then
-	                parsers.parsers = {}
-	            end
-	            parsers.parsers.prs = {
-	                install_info = {
-	                    url = "~/Code/prs",
-	                    files = { "src/parser.c" },
-	                    branch = "main",
-	                    generate_requires_npm = false,
-	                    requires_generate_from_grammar = false,
-	                },
-	                filetype = "prs",
-	            }
-	            vim.treesitter.language.register("prs", "prs")
-	        end, 100)   -- wait 100ms after startup
-	    end,
-	},
+	  'nvim-treesitter/nvim-treesitter',
+	  lazy = false,
+	  build = ':TSUpdate'
+	}
 })

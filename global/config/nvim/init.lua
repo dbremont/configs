@@ -76,33 +76,37 @@ require("lazy").setup({
 	{
 	    "nvim-treesitter/nvim-treesitter",
 	    build = ":TSUpdate",
-	    -- event = "VeryLazy",   -- REMOVED: causes module not found error
+	    lazy = false,      -- force immediate loading
 	    config = function()
-	        vim.filetype.add({ extension = { prs = "prs" } })
-	
-	        -- Safely add custom parser
-	        local parsers = require("nvim-treesitter.parsers")
-	        if not parsers.parsers then
-	            parsers.parsers = {}
-	        end
-	        parsers.parsers.prs = {
-	            install_info = {
-	                url = "~/Code/prs",
-	                files = { "src/parser.c" },
-	                branch = "main",
-	                generate_requires_npm = false,
-	                requires_generate_from_grammar = false,
-	            },
-	            filetype = "prs",
-	        }
-	
+	        -- Standard treesitter setup (works after plugin is loaded)
 	        require("nvim-treesitter.configs").setup({
 	            ensure_installed = { "bash", "lua", "json", "yaml", "markdown" },
 	            highlight = { enable = true },
 	            indent = { enable = true },
 	        })
 	
-	        vim.treesitter.language.register("prs", "prs")
+	        -- Register custom parser after setup, using an autocommand to ensure all modules exist
+	        vim.api.nvim_create_autocmd("User", {
+	            pattern = "TreesitterSetup",
+	            callback = function()
+	                vim.filetype.add({ extension = { prs = "prs" } })
+	                local parsers = require("nvim-treesitter.parsers")
+	                if not parsers.parsers then
+	                    parsers.parsers = {}
+	                end
+	                parsers.parsers.prs = {
+	                    install_info = {
+	                        url = "~/Code/prs",
+	                        files = { "src/parser.c" },
+	                        branch = "main",
+	                        generate_requires_npm = false,
+	                        requires_generate_from_grammar = false,
+	                    },
+	                    filetype = "prs",
+	                }
+	                vim.treesitter.language.register("prs", "prs")
+	            end,
+	        })
 	    end,
 	},
 })

@@ -98,10 +98,8 @@ require("lazy").setup({
 		-- PRS parser registration
 		------------------------------------------------------------------
 
-		local parser_config =
-			require("nvim-treesitter.parsers")
-			.get_parser_configs()
-
+		local parser_config = require("nvim-treesitter.parsers")
+	
 		parser_config.prs = {
 
 			install_info = {

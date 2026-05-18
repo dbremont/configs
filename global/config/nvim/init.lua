@@ -75,46 +75,32 @@ require("lazy").setup({
 	--------------------------------------------------------------------------
 	-- Treesitter
 	--------------------------------------------------------------------------
-
 	{
-    "nvim-treesitter/nvim-treesitter",
-
-    build = ":TSUpdate",
-
-    event = { "BufReadPost", "BufNewFile" },
-
-    config = function()
-        -- .prs filetype detection
-        vim.filetype.add({
-            extension = { prs = "prs" },
-        })
-
-        local parsers = require("nvim-treesitter.parsers")
-        parsers.parsers.prs = {
-            install_info = {
-                url = "~/Code/prs",
-                files = { "src/parser.c" },
-                branch = "main",
-                generate_requires_npm = false,
-                requires_generate_from_grammar = false,
-            },
-            filetype = "prs",
-        }
-
-        -- Treesitter setup
-        require("nvim-treesitter.configs").setup({
-            ensure_installed = {
-                "bash", "lua", "json", "yaml", "markdown",
-            },
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = { enable = true },
-        })
-
-        -- Register language for the new filetype
-        vim.treesitter.language.register("prs", "prs")
-    end
-}		
+	    "nvim-treesitter/nvim-treesitter",
+	    build = ":TSUpdate",
+	    event = "VeryLazy",   -- loads after startup, before you need it
+	    config = function()
+	        vim.filetype.add({ extension = { prs = "prs" } })
+	
+	        local parsers = require("nvim-treesitter.parsers")
+	        parsers.parsers.prs = {
+	            install_info = {
+	                url = "~/Code/prs",
+	                files = { "src/parser.c" },
+	                branch = "main",
+	                generate_requires_npm = false,
+	                requires_generate_from_grammar = false,
+	            },
+	            filetype = "prs",
+	        }
+	
+	        require("nvim-treesitter.configs").setup({
+	            ensure_installed = { "bash", "lua", "json", "yaml", "markdown" },
+	            highlight = { enable = true },
+	            indent = { enable = true },
+	        })
+	
+	        vim.treesitter.language.register("prs", "prs")
+	    end,
+	},
 })

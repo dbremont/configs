@@ -69,18 +69,21 @@ require("lazy").setup({
 			})
 		end
 	},
-
 	--------------------------------------------------------------------------
 	-- Treesitter
 	--------------------------------------------------------------------------
 	{
 	    "nvim-treesitter/nvim-treesitter",
 	    build = ":TSUpdate",
-	    event = "VeryLazy",   -- loads after startup, before you need it
+	    event = "VeryLazy",
 	    config = function()
 	        vim.filetype.add({ extension = { prs = "prs" } })
 	
+	        -- Ensure the parsers table exists, then add your custom parser
 	        local parsers = require("nvim-treesitter.parsers")
+	        if not parsers.parsers then
+	            parsers.parsers = {}
+	        end
 	        parsers.parsers.prs = {
 	            install_info = {
 	                url = "~/Code/prs",

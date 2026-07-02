@@ -3,7 +3,6 @@
 	editor = nvim
 	hooksPath = ~/configs/global/git/hooks
 [commit]
-	template= ~/configs/bin/commit-msg-template
 	status= false
 [gpg]
 	format = ssh

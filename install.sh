@@ -16,7 +16,7 @@ dependencies_linux=(
   "rg" "sudo apt install ripgrep"
   "hyperfine" "sudo apt install hyperfine"
   "btop" "sudo apt install btop"
-  ## "pipx" "sudo apt install pipx"
+  "Fastfetch" "sudo apt install fastfetch"
   "c++" "sudo apt install build-essential"
   "zoxide" "sudo apt install zoxide"
 )
@@ -111,7 +111,7 @@ function deploy_configs() {
   # XDG app configs -> $HOME/.config/<app>/
   link_config "global/kitty/kitty.conf"        "$HOME/.config/kitty/kitty.conf"
   link_config "global/nvim"                    "$HOME/.config/nvim"
-  link_config "global/fastfetch/config.jsonc"  "$HOME/.config/fastfetch/config.jsonc"
+  link_config "global/fastfetch/config.json"  "$HOME/.config/fastfetch/config.json"
   link_config "global/pip/pip.conf"            "$HOME/.config/pip/pip.conf"
 
   # Home dotfiles (helper files like global-aliases / git hooks are referenced by

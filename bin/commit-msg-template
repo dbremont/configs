@@ -1,5 +1,0 @@
-type(scope, jira): msg
-
-body? optional
-
-Fix: jira

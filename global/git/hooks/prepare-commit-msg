@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+MSG_FILE="$1"
+COMMIT_SOURCE="$2"
+
+# Do not overwrite existing messages created by Git.
+case "$COMMIT_SOURCE" in
+    merge|squash|commit)
+        exit 0
+        ;;
+esac
+
+BRANCH=$(git branch --show-current)
+
+# Extract Jira key from branch names such as:
+#   20260624-SGF-11181
+#   20260624-sgf-11181
+#   feature/20260624-SGF-11181-login
+# Produces:
+#   SGF-11181
+JIRA=$(echo "$BRANCH" |
+    grep -Eio '[A-Z]{2,10}-[0-9]+' |
+    head -n1 |
+    tr '[:lower:]' '[:upper:]')
+
+if [[ -z "$JIRA" ]]; then
+    REF="$BRANCH"
+else
+    REF="$JIRA"
+fi
+
+FILES=$(git diff --cached --name-only | sed 's/^/- /')
+
+cat >"$MSG_FILE" <<EOF
+type(scope, $REF): message
+
+body? optional
+
+Appended Information:
+$FILES
+
+EOF

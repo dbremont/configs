@@ -29,8 +29,8 @@
 - https://github.com/fastfetch-cli/fastfetch
 - https://github.com/abishekvashok/cmatrix
   
-- themes
-  - ...
+- Themes
+- Opencode.
 
 ## Programming
 

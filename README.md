@@ -17,43 +17,31 @@
 ## **🚀 Installation Guide**  
 
 ```bash
-- ./bootstrap.zsh  # 🛠️ Entry point (Installer)
-
-- rm "$HOME/.config/Code - Insiders/User/keybindings.json"
-- ln -s $HOME/configs/global/config/vscode/keybindings.json "$HOME/.config/Code - Insiders/User/keybindings.json"  # VS Code 
-- rm -rf $HOME/.config/kitty
-- ln -s "$HOME/configs/global/config/kitty" "$HOME/.config/kitty"
-
-Insiders.
-
+cd ~ && git clone https://github.com/dbremont/configs
+./configs/install.sh   # 🛠️ Installs dependencies + symlinks all configs
 ```  
+
+The installer is idempotent: it skips already-linked configs and backs up any
+existing real files as `*.bak` before symlinking. VS Code Insiders keybindings
+and `~/.ssh/config` permissions are handled automatically.
 
 ## ⚙️ Usage  
 
-> Leverage **GNU Stow** or manual symlinking to apply configurations efficiently.  
+> Running `./configs/install.sh` symlinks every config into place. The script is
+> idempotent, so re-running it after a `git pull` will update links safely.
 
 ```bash
 cd ~ && git clone https://github.com/dbremont/configs
-stow -Sv <group>
-```
-
-```bash
-## Global
-cd global
-
-stow -v -R config  --target=$HOME/.config
-stow -v -R shell   --target=$HOME
-```
-
-```bash
-## Local
-cd local
-
+./configs/install.sh
 ```
 
 ## Notes
 
 - It is assumed that the **configuration** path is `$HOME/configs`. Refer to the **Git configuration** file for the explicit path reference.
+
+## TODO
+
+- [ ] We need a hook manager.
 
 ## References
 

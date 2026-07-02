@@ -1,8 +1,9 @@
 [core]
 	autocrlf = input
 	editor = nvim
+	hooksPath = ~/configs/global/git/hooks
 [commit]
-	template= ~/configs/global/tools/commit-msg-template
+	template= ~/configs/bin/commit-msg-template
 	status= false
 [gpg]
 	format = ssh
@@ -18,3 +19,5 @@
 	maxRequestBuffer = 1048576000
 [merge]
 	tool = vimdiff
+[init]
+	defaultBranch = main

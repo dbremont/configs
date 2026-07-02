@@ -1,0 +1,83 @@
+#!/bin/bash
+# mark-for-commit.sh - Mark files explicitly for commit
+
+set -e
+
+MARK_NAME="user.checkin"
+MARK_VALUE="1"
+
+show_help() {
+    echo "Usage: $0 [OPTIONS] <file>..."
+    echo ""
+    echo "Mark files for commit using extended attributes."
+    echo ""
+    echo "Options:"
+    echo "  -l, --list    List all marked files in current directory"
+    echo "  -u, --unmark  Remove mark from files"
+    echo "  -h, --help    Show this help"
+    echo ""
+    echo "Examples:"
+    echo "  $0 file1.txt file2.py"
+    echo "  $0 --list"
+    echo "  $0 --unmark file1.txt"
+}
+
+list_marked() {
+    echo "Marked files:"
+    find . -type f -exec getfattr -n "$MARK_NAME" {} \; 2>/dev/null | \
+        grep -B1 "user.checkin" | grep -v "^--$" | \
+        sed 's/# file: //'
+}
+
+unmark_files() {
+    for file in "$@"; do
+        if [ -f "$file" ]; then
+            if getfattr -n "$MARK_NAME" "$file" &>/dev/null; then
+                setfattr -x "$MARK_NAME" "$file"
+                echo "✓ Unmarked: $file"
+            else
+                echo "  Not marked: $file"
+            fi
+        else
+            echo "✗ Not found: $file"
+        fi
+    done
+}
+
+mark_files() {
+    for file in "$@"; do
+        if [ -f "$file" ]; then
+            setfattr -n "$MARK_NAME" -v "$MARK_VALUE" "$file"
+            echo "✓ Marked: $file"
+        else
+            echo "✗ Not found: $file"
+        fi
+    done
+}
+
+# Parse arguments
+if [ $# -eq 0 ]; then
+    show_help
+    exit 0
+fi
+
+case "$1" in
+    -h|--help)
+        show_help
+        ;;
+    -l|--list)
+        list_marked
+        ;;
+    -u|--unmark)
+        shift
+        unmark_files "$@"
+        ;;
+    -*)
+        echo "Unknown option: $1"
+        show_help
+        exit 1
+        ;;
+    *)
+        mark_files "$@"
+        ;;
+esac

@@ -1,0 +1,29 @@
+#!/bin/bash
+# post-commit - Clean up marks from committed files
+
+MARK_NAME="user.checkin"
+
+# Get files that were in the last commit
+if [ "$(git rev-list --count HEAD)" -eq 1 ]; then
+    # First commit - no parent
+    COMMITTED_FILES=$(git diff --name-only --diff-filter=ACM 4b825dc642cb6eb9a060e54bf899d15363d7aa83 HEAD 2>/dev/null || git ls-files)
+else
+    COMMITTED_FILES=$(git diff --name-only --diff-filter=ACM HEAD~1 HEAD)
+fi
+
+CLEANED=0
+
+for file in $COMMITTED_FILES; do
+    if [ -f "$file" ]; then
+        if getfattr -n "$MARK_NAME" "$file" &>/dev/null; then
+            setfattr -x "$MARK_NAME" "$file" 2>/dev/null
+            CLEANED=$((CLEANED + 1))
+        fi
+    fi
+done
+
+if [ $CLEANED -gt 0 ]; then
+    echo "✓ Cleaned marks from $CLEANED file(s)"
+fi
+
+exit 0

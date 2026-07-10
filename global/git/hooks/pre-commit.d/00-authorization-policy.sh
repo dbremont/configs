@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------------
+# Hook: Check-in Policy
+# Stage: Pre-commit
+#
+# Purpose
+#   Enforces the repository's positive marking policy by allowing only files
+#   explicitly marked as eligible for commit.
+#
+# Policy
+#   Every staged file must have the extended attribute:
+#
+#       user.checkin=1
+#
+#   Files that do not satisfy this policy cause the commit to be rejected.
+#
+# Rationale
+#   Prevents accidental commits by requiring developers to explicitly mark
+#   files intended for inclusion in the current commit.
+#
+# Resolution
+#   Mark the reported files before committing:
+#
+#       mark-for-commit <file>...
+#
+# Exit Codes
+#   0  All staged files satisfy the policy.
+#   1  One or more staged files are not marked for commit.
+# -----------------------------------------------------------------------------
+
+MARK_NAME="user.checkin"
+EXPECTED_VALUE="1"
+
+# Define colors
+BOLD_RED='\033[1;31m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+FAILED=0
+UNMARKED_FILES=()
+
+# Get staged files (Added, Copied, Modified - not Deleted)
+# Deleted files don't exist, so we skip them
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
+
+if [ -z "$STAGED_FILES" ]; then
+    exit 0
+fi
+
+# Check staged files silently
+for file in $STAGED_FILES; do
+    # Check if file exists (might be deleted in working tree but staged)
+    if [ ! -f "$file" ]; then
+        echo -e "${YELLOW}⚠ Warning: Skipped (not in working tree): $file${NC}"
+        continue
+    fi
+    
+    # Get the mark value
+    MARK_VALUE=$(getfattr -n "$MARK_NAME" --only-values "$file" 2>/dev/null)
+    
+    if [ "$MARK_VALUE" != "$EXPECTED_VALUE" ]; then
+        UNMARKED_FILES+=("$file")
+        FAILED=1
+    fi
+done
+
+# Output the clean error format if any files failed
+if [ $FAILED -eq 1 ]; then
+    echo -e "${BOLD_RED}Error: Required check mark is missing.${NC}"
+    echo ""
+    echo -e "The following files are not marked:"
+    for f in "${UNMARKED_FILES[@]}"; do
+        echo -e "  - ${RED}${f}${NC}"
+    done
+    echo ""
+    echo -e "Action required:"
+    # Dynamically output the exact command to fix all failed files at once
+    echo -e "  ${YELLOW}mark-for-commit ${UNMARKED_FILES[*]}${NC}"
+    echo ""
+    exit 1
+else
+    # Success message (clean and green)
+    echo -e "${GREEN}✓ Positive Marking Check Passed${NC}"
+fi
+
+exit 0

@@ -4,6 +4,8 @@ alias_if_exists 'ag' 'rg'
 alias_if_exists 'vim' 'nvim'
 alias_if_exists 'fdupes' 'jdupes'
 
+alias mfc='mark-for-commit'
+
 ## cd & ls
 if command -v exa > /dev/null; then
   alias ls=exa

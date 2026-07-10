@@ -1,5 +1,5 @@
 #!/bin/bash
-# mark-for-commit.sh - Mark files explicitly for commit
+# mark-for-commit - Mark files explicitly for commit
 
 set -e
 

@@ -4,6 +4,12 @@
 --
 -------------------------------------------------------------------------------
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+vim.keymap.set("x", "<A-j>", ":m '>+1<CR>gv")
+vim.keymap.set("x", "<A-k>", ":m '<-2<CR>gv")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -29,8 +35,9 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 
 		config = function()
-			require("lspconfig").bashls.setup({})
-		end
+			vim.lsp.config("bashls", {})
+			vim.lsp.enable("bashls")
+		end,
 	},
 
 	--------------------------------------------------------------------------
@@ -50,14 +57,14 @@ require("lazy").setup({
 		},
 
 		config = function()
-
 			local cmp = require("cmp")
 
 			cmp.setup({
 				mapping = {
 					["<C-Space>"] = cmp.mapping.complete(),
+
 					["<CR>"] = cmp.mapping.confirm({
-						select = true
+						select = true,
 					}),
 				},
 
@@ -67,7 +74,7 @@ require("lazy").setup({
 					{ name = "path" },
 				},
 			})
-		end
+		end,
 	},
 
 	--------------------------------------------------------------------------
@@ -79,7 +86,54 @@ require("lazy").setup({
 
 		config = function()
 			require("config.dap")
-		end
+		end,
+	},
+
+	--------------------------------------------------------------------------
+	-- Telescope
+	--------------------------------------------------------------------------
+
+	{
+		"nvim-telescope/telescope.nvim",
+
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+
+		config = function()
+			local telescope = require("telescope")
+			local builtin = require("telescope.builtin")
+
+			telescope.setup({
+				defaults = {
+					layout_strategy = "horizontal",
+
+					layout_config = {
+						width = 0.9,
+						height = 0.9,
+						preview_width = 0.5,
+					},
+
+					preview = {
+						hide_on_startup = false,
+					},
+				},
+			})
+
+			vim.keymap.set(
+				"n",
+				"<leader>ff",
+				builtin.find_files,
+				{ desc = "Find files" }
+			)
+
+			vim.keymap.set(
+				"n",
+				"<leader>fg",
+				builtin.live_grep,
+				{ desc = "Live grep" }
+			)
+		end,
 	},
 
 })

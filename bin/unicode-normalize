@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use Unicode::Normalize qw(NFD);
+
+binmode STDIN,  ':encoding(UTF-8)';
+binmode STDOUT, ':encoding(UTF-8)';
+
+while (<STDIN>) {
+    $_ = NFD($_);
+    s/\p{M}//g;
+    print;
+}

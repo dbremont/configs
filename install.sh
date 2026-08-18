@@ -19,6 +19,8 @@ dependencies_linux=(
   "Fastfetch" "sudo apt install fastfetch"
   "c++" "sudo apt install build-essential"
   "zoxide" "sudo apt install zoxide"
+  "xclip" "sudo apt install xclip"
+
 )
 
 dependencies_common=(

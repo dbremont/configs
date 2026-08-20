@@ -30,6 +30,13 @@ bind-mounted — no rebuilds; the CA persists in `~/.mitmproxy` so browser
 trust survives. `--restart unless-stopped` + enabled docker service bring
 it back after reboots.
 
+## mitmproxy
+
+- Download the binaries from [mitmproxy.org](https://www.mitmproxy.org/?utm_source=chatgpt.com).
+- Run `mitmproxy` once to generate the local Certificate Authority (CA).
+- The generated CA files are stored in `~/.mitmproxy/`.
+- Import `~/.mitmproxy/mitmproxy-ca-cert.pem` into the browser's trusted Certificate Authorities.
+
 ## Blocklist
 
 Edit `bin/dwt/domains.txt` — one domain per line, subdomains included.

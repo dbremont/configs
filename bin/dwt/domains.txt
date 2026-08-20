@@ -17,4 +17,3 @@ fbcdn.net
 twitter.com
 x.com
 twimg.com
-news.ycombinator.com

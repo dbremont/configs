@@ -1,0 +1,20 @@
+# dwt blocklist — one domain per line; subdomains are matched too.
+reddit.com
+redd.it
+reddit.net
+youtube.com
+youtu.be
+ytimg.com
+googlevideo.com
+twitch.tv
+ttvnf.net
+instagram.com
+cdninstagram.com
+tiktok.com
+tiktokcdn.com
+facebook.com
+fbcdn.net
+twitter.com
+x.com
+twimg.com
+news.ycombinator.com

@@ -131,11 +131,6 @@ function deploy_configs() {
 
   # VS Code Insiders (non-standard target path, handled manually)
   link_config "global/vscode/keybindings.json" "$HOME/.config/Code - Insiders/User/keybindings.json"
-
-  # NS - /etc/hosts (requires sudo, only if it already exists)
-  if [[ -e "/etc/hosts" ]]; then
-    link_config "global/dns/hosts" "/etc/hosts" --sudo
-  fi
 }
 
 deploy_configs

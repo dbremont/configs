@@ -1,103 +1,84 @@
 #!/usr/bin/env bash
-# dwt.sh — rebuild and redeploy the "Don't Waste Time" interception page.
-# Idempotent: removes the old container/image if they exist, rebuilds, reruns.
-# Publishes on a random uncommon host port (21000-29999), verified available.
+# dwt.sh — run the dwt proxy (mitmdump + bin/redirect.py) in a container.
+#
+#   browser (manual proxy 127.0.0.1:8080)
+#     -> dwt container (mitmproxy/mitmproxy image, port 8080)
+#          blocked host (bin/dwt/domains.txt)  -> bin/dwt/index.html
+#          everything else                     -> forwarded untouched
+#
+# - Config is bind-mounted: edit domains.txt / index.html, then
+#   `docker restart dwt` (domains load at startup).
+# - CA persists in ~/.mitmproxy: browser trust survives recreations.
+# - --restart unless-stopped: container returns after reboots
+#   (docker service is enabled; see `systemctl is-enabled docker`).
 #
 # Usage:
-#   ./dwt.sh              rebuild + redeploy on a random available port
-#   PORT=21432 ./dwt.sh   force a specific host port
-#   ./dwt.sh logs         follow the container logs after deploy
+#   ./dwt.sh          (re)create + start the container
+#   ./dwt.sh logs     follow the proxy logs
+#   ./dwt.sh stop     remove the container
 
 set -euo pipefail
 
-IMAGE="dwt"
+IMAGE="mitmproxy/mitmproxy:latest"
 CONTAINER="dwt"
-PORT_MIN=21000
-PORT_MAX=29999
-MAX_TRIES=10
+PROXY_PORT="8080"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CA_DIR="$HOME/.mitmproxy"
 
-cd "$SCRIPT_DIR"
+say() { printf '\033[1;32m==>\033[0m %s\n' "$*"; }
 
-say()  { printf '\033[1;32m==>\033[0m %s\n' "$*"; }
+case "${1:-}" in
+  stop)
+    docker rm -f "$CONTAINER" >/dev/null 2>&1 || true
+    say "Removed '$CONTAINER'"
+    exit 0
+    ;;
+esac
 
-# 1. Remove existing container
-if docker ps -a --format '{{.Names}}' | grep -qx "$CONTAINER"; then
-  say "Removing existing container '$CONTAINER'"
-  docker rm -f "$CONTAINER" >/dev/null
-else
-  say "No existing container '$CONTAINER'"
-fi
-
-# 2. Remove existing image
-if docker images --format '{{.Repository}}' | grep -qx "$IMAGE"; then
-  say "Removing existing image '$IMAGE'"
-  docker rmi -f "$IMAGE" >/dev/null
-else
-  say "No existing image '$IMAGE'"
-fi
-
-# 3. Rebuild
-say "Building image '$IMAGE'"
-docker build -t "$IMAGE" "$SCRIPT_DIR/bin/dwt" >/dev/null
-
-# 4. Pick a host port: explicit PORT if given, else a random uncommon one.
-#    Collect every port currently in use by any process (TCP + UDP, v4 + v6)
-#    plus every port Docker has published, then choose outside that set.
-used_ports() {
-  {
-    # all listening TCP and UDP ports, any address family
-    ss -H -ltnu 2>/dev/null | awk '{ print $4 }' | awk -F: '{ print $NF }'
-    # ports docker has published on the host
-    docker ps --format '{{.Ports}}' | tr ' ' '\n' | sed -n 's/.*:\([0-9]*\)->.*/\1/p'
-  } | grep -E '^[0-9]+$' | sort -u
-}
-
-port_in_use() {
-  grep -qx "$1" <<<"$USED"
-}
-
-pick_port() {
-  local port tried=0
-  while (( tried < MAX_TRIES )); do
-    port=$(( RANDOM % (PORT_MAX - PORT_MIN + 1 ) + PORT_MIN ))
-    tried=$(( tried + 1 ))
-    port_in_use "$port" || { echo "$port"; return 0; }
+# 1. Free the port if a manual mitmdump/mitmproxy is holding it
+if ss -tlnp 2>/dev/null | grep -q ":$PROXY_PORT "; then
+  pids="$(ss -tlnp 2>/dev/null | grep ":$PROXY_PORT " | grep -oP '(?<=pid=)\d+' | sort -u)"
+  for pid in $pids; do
+    if ps -p "$pid" -o cmd= | grep -qE 'mitm(proxy|dump).*bin/redirect\.py'; then
+      kill "$pid" && say "Stopped manual proxy (pid $pid)"
+    else
+      echo "Port $PROXY_PORT held by unrelated process (pid $pid):" >&2
+      ps -p "$pid" -o cmd= >&2
+      exit 1
+    fi
   done
-  return 1
-}
-
-USED="$(used_ports)"
-PORT="${PORT:-$(pick_port)}" || { echo "No free port in $PORT_MIN-$PORT_MAX" >&2; exit 1; }
-
-# 5. Redeploy
-run_container() {
-  docker rm -f "$CONTAINER" >/dev/null 2>&1 || true
-  docker run -d \
-    --name "$CONTAINER" \
-    --restart unless-stopped \
-    -p "$1:80" \
-    "$IMAGE" >/dev/null 2>&1
-}
-
-say "Running container '$CONTAINER' on host port $PORT -> container 80"
-if ! run_container "$PORT"; then
-  # Lost the race for the port — refresh the in-use set and retry
-  USED="$(used_ports)"
-  PORT="$(pick_port)" || { echo "No free port in $PORT_MIN-$PORT_MAX" >&2; exit 1; }
-  say "Port taken mid-deploy — retrying on $PORT"
-  run_container "$PORT" || true
+  sleep 1
 fi
 
-# 6. Verify
-sleep 1
-if docker ps --filter "name=$CONTAINER" --filter "status=running" --format '{{.Names}}' | grep -qx "$CONTAINER"; then
-  say "Deployed: http://127.0.0.1:$PORT"
-else
-  printf '\033[1;31mContainer failed to start:\033[0m\n' >&2
-  docker logs "$CONTAINER" >&2 || true
-  exit 1
+# 2. CA dir must be writable by the image's user (uid resolved at runtime)
+mkdir -p "$CA_DIR"
+CA_UID="$(docker run --rm --entrypoint id "$IMAGE" -u)"
+if [[ "$CA_UID" != "0" && "$(stat -c %u "$CA_DIR")" != "$CA_UID" ]]; then
+  docker run --rm --user 0 -v "$CA_DIR":/ca --entrypoint chown "$IMAGE" -R "$CA_UID:$CA_UID" /ca
 fi
+
+# 3. (Re)create the container
+docker rm -f "$CONTAINER" >/dev/null 2>&1 || true
+docker run -d \
+  --name "$CONTAINER" \
+  --restart unless-stopped \
+  -p 127.0.0.1:"$PROXY_PORT":"$PROXY_PORT" \
+  -v "$SCRIPT_DIR/bin/redirect.py":/app/redirect.py:ro \
+  -v "$SCRIPT_DIR/bin/dwt":/app/dwt:ro \
+  -v "$CA_DIR":/mitmproxy-ca \
+  "$IMAGE" \
+  mitmdump -s /app/redirect.py \
+    --listen-host 0.0.0.0 --listen-port "$PROXY_PORT" \
+    --set confdir=/mitmproxy-ca >/dev/null
+
+# 4. Verify
+sleep 3
+docker ps --filter "name=$CONTAINER" --filter "status=running" --format '{{.Names}}' \
+  | grep -qx "$CONTAINER" || { docker logs "$CONTAINER" >&2; exit 1; }
+ss -tlnH | awk '{print $4}' | grep -qx "127.0.0.1:$PROXY_PORT" \
+  || { echo "Not listening on 127.0.0.1:$PROXY_PORT" >&2; docker logs "$CONTAINER" >&2; exit 1; }
+say "dwt proxy on 127.0.0.1:$PROXY_PORT (restarts on reboot)"
+say "Blocked domains: bin/dwt/domains.txt (reload: docker restart $CONTAINER)"
 
 if [[ "${1:-}" == "logs" ]]; then
   docker logs -f "$CONTAINER"

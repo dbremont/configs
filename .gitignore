@@ -4,4 +4,6 @@ local/
 !local/.env
 **/nvim/lazy-lock.json
 
-env/**
+**/env/**
+
+**/__pycache__

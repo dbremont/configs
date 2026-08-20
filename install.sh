@@ -80,12 +80,15 @@ install_dependencies
 ################ Deploy configs ################
 echo "[~] deploying configs...";
 
-# link_config <source-relative-to-$CONFIG_DIR> <destination>
+# link_config <source-relative-to-$CONFIG_DIR> <destination> [--sudo]
 # Creates an idempotent symlink: skips if already correct, backs up any existing
-# real file as <dest>.bak before linking.
+# real file as <dest>.bak before linking. Pass --sudo to run privileged
+# operations (mv/mkdir/ln) with sudo, e.g. for system paths like /etc/hosts.
 function link_config() {
   local src="$CONFIG_DIR/$1"
   local dest="$2"
+  local sudo_cmd=""
+  [[ "$3" == "--sudo" ]] && sudo_cmd="sudo"
 
   if [[ ! -e "$src" ]]; then
     echo "[!] warning - source not found, skipping: $src"
@@ -101,11 +104,11 @@ function link_config() {
   # Back up an existing non-symlink (real file / dir) before replacing it.
   if [[ -e "$dest" ]] && [[ ! -L "$dest" ]]; then
     echo "[~] backing up existing: $dest -> ${dest}.bak"
-    mv "$dest" "${dest}.bak"
+    ${sudo_cmd} mv "$dest" "${dest}.bak"
   fi
 
-  mkdir -p "${dest:h}"
-  ln -sfn "$src" "$dest"
+  ${sudo_cmd} mkdir -p "${dest:h}"
+  ${sudo_cmd} ln -sfn "$src" "$dest"
   echo "[+] linked: $dest -> $src"
 }
 
@@ -128,6 +131,11 @@ function deploy_configs() {
 
   # VS Code Insiders (non-standard target path, handled manually)
   link_config "global/vscode/keybindings.json" "$HOME/.config/Code - Insiders/User/keybindings.json"
+
+  # NS - /etc/hosts (requires sudo, only if it already exists)
+  if [[ -e "/etc/hosts" ]]; then
+    link_config "global/dns/hosts" "/etc/hosts" --sudo
+  fi
 }
 
 deploy_configs

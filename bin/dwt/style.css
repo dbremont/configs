@@ -1,0 +1,509 @@
+/* ==========================================================================
+   Time — Don't Waste It — editorial redirect page.
+   Typography-led, one viewport: every size derives from vh-aware clamps.
+   ========================================================================== */
+
+:root {
+  --gold: #a8453a;                      /* dying ember — the warning */
+  --gold-soft: #c08477;
+  --text: #d6d2c8;                      /* bone ash */
+  --muted: #8f9793;
+  --line: rgba(198, 203, 199, 0.13);
+  --panel: rgba(9, 16, 15, 0.7);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype",
+          "Book Antiqua", Georgia, ui-serif, serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #030605;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  overflow: hidden;                     /* the whole composition, one viewport */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: rgba(168, 69, 58, 0.32); color: var(--text); }
+
+/* --------------------------------------------------------------------------
+   Backdrop — kept quiet so the type leads
+   -------------------------------------------------------------------------- */
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    #020404 0%,
+    #030605 40%,
+    #050b0a 72%,
+    #081210 90%,
+    #0b1714 100%);
+}
+
+.stars { position: absolute; inset: 0; height: 42%; }
+
+.stars-a {
+  opacity: 0.26;
+  background-image:
+    radial-gradient(1px 1px at 22px 34px, rgba(214, 210, 200, 0.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 118px 12px, rgba(214, 210, 200, 0.4) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 174px 88px, rgba(214, 210, 200, 0.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 230px 60px, rgba(214, 210, 200, 0.45) 50%, transparent 51%);
+  background-size: 280px 280px;
+  animation: twinkle 8s ease-in-out infinite alternate;
+}
+
+.stars-b {
+  opacity: 0.14;
+  background-image:
+    radial-gradient(1px 1px at 66px 120px, rgba(214, 210, 200, 0.4) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 20px 180px, rgba(214, 210, 200, 0.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 140px 210px, rgba(214, 210, 200, 0.35) 50%, transparent 51%);
+  background-size: 340px 340px;
+  animation: twinkle 10s ease-in-out infinite alternate-reverse;
+}
+
+/* the last light, low and receding */
+.glow {
+  position: absolute;
+  left: 50%;
+  bottom: 16%;
+  width: min(900px, 90vw);
+  aspect-ratio: 2 / 1;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center,
+    rgba(168, 69, 58, 0.1),
+    rgba(168, 69, 58, 0.03) 40%,
+    transparent 68%);
+}
+
+.ridges {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 34vh;
+  min-height: 160px;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%,
+    rgba(16, 26, 24, 0.05),
+    rgba(1, 3, 3, 0.62));
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   Page column — the whole poster lives inside one viewport
+   -------------------------------------------------------------------------- */
+
+.page {
+  position: relative;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(8px, 2vh, 28px) 24px clamp(6px, 1.6vh, 20px);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: min(930px, 100%);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Fractal tree
+   -------------------------------------------------------------------------- */
+
+.tree-wrap {
+  height: clamp(110px, 19vh, 210px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.tree {
+  width: min(320px, 76vw);
+  height: 100%;
+  display: block;
+}
+
+.tree-fallback { display: none; }
+
+.no-js .tree-fallback {
+  display: block;
+  width: 150px;
+  height: 130px;
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   Hero cluster
+   -------------------------------------------------------------------------- */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: clamp(4px, 1.2vh, 14px) 0 0;
+  color: #a4aaa6;
+  font-size: clamp(9px, 1.2vh + 0.2vmin, 12px);
+  letter-spacing: 7px;
+  text-indent: 7px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  width: 38px;
+  height: 1px;
+  background: rgba(198, 203, 199, 0.16);
+}
+
+.dont-waste {
+  margin: clamp(8px, 2.4vh, 28px) 0 0;
+  font-size: clamp(11px, 1.4vh + 0.3vmin, 15px);
+  font-weight: 500;
+  letter-spacing: 9px;
+  text-indent: 9px;
+  text-transform: uppercase;
+  color: #c2c0b9;
+}
+
+.hero {
+  margin: clamp(2px, 0.8vh, 12px) 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(3.6rem, min(12vw, 14vh), 9.5rem);
+  line-height: 0.78;
+  font-weight: 500;
+  letter-spacing: -6px;
+  color: #ddd8cc;
+  text-shadow: 0 6px 34px rgba(0, 0, 0, 0.5);
+}
+
+.divider {
+  width: min(390px, 70%);
+  height: 1px;
+  margin: clamp(8px, 2vh, 22px) auto clamp(6px, 1.6vh, 18px);
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(206, 209, 203, 0.2),
+    transparent);
+  position: relative;
+}
+
+.divider::after {
+  content: "✦";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -54%);
+  color: var(--gold);
+  font-size: clamp(12px, 1.6vh, 16px);
+  filter: drop-shadow(0 0 6px rgba(168, 69, 58, 0.5));
+}
+
+.tagline {
+  margin: 0;
+  font-family: var(--font-serif);
+  color: var(--gold-soft);
+  font-size: clamp(17px, 2.6vh, 25px);
+  letter-spacing: 0.3px;
+}
+
+.future {
+  margin: clamp(4px, 1.3vh, 16px) 0 0;
+  font-size: clamp(9px, 1.2vh + 0.2vmin, 12px);
+  letter-spacing: 5px;
+  text-indent: 5px;
+  text-transform: uppercase;
+  color: #9ea4a0;
+}
+
+.current-time {
+  margin: clamp(3px, 1vh, 12px) 0 0;
+  font-size: clamp(12px, 1.5vh + 0.2vmin, 16px);
+  font-variant-numeric: tabular-nums;
+  color: #a6aca8;
+}
+
+/* --------------------------------------------------------------------------
+   Redirect card
+   -------------------------------------------------------------------------- */
+
+.redirect-card {
+  width: min(530px, 100%);
+  margin: clamp(10px, 2.8vh, 38px) auto clamp(8px, 2vh, 24px);
+  padding: clamp(8px, 1.6vh, 16px) clamp(16px, 2.6vh, 30px);
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vh, 20px);
+  text-align: left;
+  background: linear-gradient(90deg,
+    rgba(13, 22, 20, 0.88),
+    rgba(7, 13, 12, 0.78));
+  border: 1px solid rgba(198, 203, 199, 0.14);
+  border-radius: 14px;
+  box-shadow:
+    0 12px 38px rgba(0, 0, 0, 0.4),
+    inset 0 1px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.redirect-icon {
+  width: clamp(40px, 6vh, 58px);
+  height: clamp(40px, 6vh, 58px);
+  flex: 0 0 auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(3, 8, 7, 0.55);
+  color: var(--gold);
+}
+
+.redirect-icon svg { width: 55%; height: 55%; }
+
+.redirect-title {
+  margin: 0 0 clamp(2px, 0.6vh, 7px);
+  font-size: clamp(13px, 1.8vh, 16px);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #cdcac2;
+}
+
+.redirect-text {
+  margin: 0;
+  font-size: clamp(11px, 1.5vh, 13px);
+  color: #8f9793;
+}
+
+/* --------------------------------------------------------------------------
+   Actions
+   -------------------------------------------------------------------------- */
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 auto clamp(8px, 2.4vh, 34px);
+  max-width: 940px;
+}
+
+.action {
+  padding: clamp(2px, 0.8vh, 10px) clamp(10px, 2vw, 28px);
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(10px, 1.4vw, 17px);
+  text-align: left;
+  border-right: 1px solid rgba(198, 203, 199, 0.13);
+}
+
+.action:last-child { border-right: none; }
+
+.action-icon {
+  color: var(--gold);
+  line-height: 1;
+  flex: none;
+  padding-top: 2px;
+}
+
+.action-icon svg { width: clamp(18px, 2.6vh, 26px); height: clamp(18px, 2.6vh, 26px); }
+
+.action-title {
+  margin: 0 0 clamp(1px, 0.5vh, 5px);
+  color: #c8c6bf;
+  font-size: clamp(11px, 1.5vh, 13px);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.action-text {
+  margin: 0;
+  color: #8f9793;
+  font-size: clamp(10px, 1.3vh, 12px);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Quote
+   -------------------------------------------------------------------------- */
+
+.quote-card {
+  width: min(530px, 100%);
+  margin: 0 auto;
+  padding: clamp(10px, 2.4vh, 26px) clamp(18px, 3.4vh, 40px) clamp(8px, 1.8vh, 18px);
+  border: 1px solid rgba(198, 203, 199, 0.13);
+  border-radius: 14px;
+  background: rgba(5, 11, 10, 0.55);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.015),
+    0 15px 40px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.quote-mark {
+  display: block;
+  height: clamp(14px, 2.4vh, 24px);
+  color: #9c7268;
+  font-family: Georgia, serif;
+  font-size: clamp(28px, 4.4vh, 42px);
+  line-height: 1;
+}
+
+blockquote {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 2.6vh, 24px);
+  font-style: italic;
+  line-height: 1.28;
+  color: #c4beb2;
+}
+
+.make-count {
+  margin: clamp(6px, 1.6vh, 17px) 0 0;
+  color: var(--gold);
+  font-size: clamp(9px, 1.3vh, 12px);
+  letter-spacing: 6px;
+  text-indent: 6px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.quote-line {
+  width: 70px;
+  height: 1px;
+  margin: clamp(6px, 1.6vh, 17px) auto 0;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(190, 92, 74, 0.55),
+    transparent);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+footer {
+  margin-top: clamp(4px, 1.4vh, 16px);
+  color: rgba(150, 156, 152, 0.72);
+  font-size: clamp(9px, 1.2vh, 12px);
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+footer span { color: rgba(168, 92, 76, 0.6); }
+footer svg { width: 12px; height: 12px; display: block; }
+
+/* --------------------------------------------------------------------------
+   Focus, motion, no-JS
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.no-js .js-only { display: none; }
+
+@keyframes twinkle {
+  from { opacity: 0.24; }
+  to   { opacity: 0.44; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stars-a, .stars-b { animation: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Fit to viewport — progressive trimming on short screens
+   -------------------------------------------------------------------------- */
+
+/* Slightly short: drop the small print */
+@media (max-height: 800px) {
+  .action-text, footer, .future { display: none; }
+  .actions { grid-template-columns: repeat(4, auto); justify-content: center; }
+}
+
+/* Short: drop supporting lines, tighten cards */
+@media (max-height: 680px) {
+  .tree-wrap { height: clamp(90px, 16vh, 150px); }
+  .redirect-text, .current-time { display: none; }
+  .eyebrow::before, .eyebrow::after { width: 22px; }
+}
+
+/* Very short (landscape phones): hero cluster + one card only */
+@media (max-height: 540px) {
+  .actions, .quote-line, .divider { display: none; }
+  .quote-card { padding: 8px 18px; }
+  .quote-mark { height: 10px; font-size: 20px; }
+  .make-count { margin-top: 4px; }
+  .tagline { font-size: 16px; }
+}
+
+/* --------------------------------------------------------------------------
+   Width responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .hero { font-size: clamp(3.4rem, 24vw, 8rem); }
+  .dont-waste { letter-spacing: 5px; text-indent: 5px; }
+
+  .actions {
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    gap: clamp(4px, 1.4vh, 20px) 0;
+  }
+
+  .action { padding: 0 14px; }
+  .action:nth-child(2) { border-right: none; }
+  .redirect-card { margin-top: clamp(10px, 3vh, 34px); }
+}
+
+@media (max-width: 500px) {
+  .tree-wrap { height: clamp(100px, 16vh, 175px); }
+  .redirect-card { margin-top: clamp(8px, 2vh, 26px); }
+  .eyebrow { font-size: 9px; letter-spacing: 4px; }
+  .tagline { font-size: clamp(15px, 2.2vh, 20px); }
+
+  .action { padding: 0 12px; }
+  .action-icon svg { width: 18px; height: 18px; }
+
+  blockquote { font-size: clamp(16px, 2.2vh, 20px); }
+}
+
+@media (max-width: 360px) {
+  .actions { display: none; }
+}

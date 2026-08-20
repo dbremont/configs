@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex">
+  <title>Time — Don't Waste It</title>
+  <meta name="description" content="Redirected for a reason. Life is short. Focus on what matters.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='9' width='14' height='14' transform='rotate(45 16 16)' fill='%23d9bb86'/%3E%3C/svg%3E">
+  <script>document.documentElement.classList.replace('no-js','js')</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Quiet atmospheric backdrop: night sky, horizon glow, distant ridges -->
+  <div class="bg" aria-hidden="true">
+    <div class="stars stars-a"></div>
+    <div class="stars stars-b"></div>
+    <div class="glow"></div>
+    <svg class="ridges" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" focusable="false">
+      <path fill="#081410" opacity=".7"
+        d="M0 208 C180 158 340 190 520 168 C700 148 860 186 1040 166 C1200 150 1340 178 1440 162 L1440 320 H0 Z"/>
+      <path fill="#050d0b"
+        d="M0 246 C160 210 320 234 500 218 C680 202 860 232 1040 214 C1220 198 1340 222 1440 208 L1440 320 H0 Z"/>
+      <path fill="#030806"
+        d="M0 282 C240 252 480 274 720 262 C960 250 1200 274 1440 258 L1440 320 H0 Z"/>
+    </svg>
+    <div class="vignette"></div>
+    <div class="grain"></div>
+  </div>
+
+  <main class="page">
+    <div class="content">
+
+      <!-- FRACTAL TREE — growth as the metaphor -->
+      <div class="tree-wrap">
+        <canvas class="tree js-only" id="tree" role="img"
+          aria-label="A fractal tree, growing one branch at a time, swaying gently"></canvas>
+        <svg class="tree-fallback" viewBox="0 0 200 160" aria-hidden="true" focusable="false">
+          <g stroke="#8f8a82" fill="none" stroke-linecap="round" opacity=".6">
+            <path d="M100 160V96" stroke-width="3"/>
+            <path d="M100 96 76 64M100 96l24-32" stroke-width="2.2"/>
+            <path d="M76 64 60 40M76 64l14-22M124 64l-14-22M124 64l14-24" stroke-width="1.6"/>
+            <path d="M60 40l-10-16M60 40l10-14M90 42l-8-16M90 42l8-14M110 42l-8-16M110 42l8-14M138 40l-10-16M138 40l10-14" stroke-width="1.1"/>
+          </g>
+        </svg>
+      </div>
+
+      <p class="eyebrow" id="site-line">You were about to drift.</p>
+
+      <!-- HERO -->
+      <p class="dont-waste">Don&rsquo;t waste</p>
+      <h1 class="hero">Time.</h1>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <p class="tagline">Life is short. Focus on what matters.</p>
+      <p class="future">Your future self will thank you</p>
+      <p class="current-time js-only" id="currentTime"></p>
+
+      <!-- REDIRECT CARD -->
+      <section class="redirect-card" aria-label="Why you are here">
+        <div class="redirect-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M14.5 5 8 12l6.5 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="redirect-title">Redirected for a reason.</h2>
+          <p class="redirect-text">Invest your time in things that truly matter.</p>
+        </div>
+      </section>
+
+      <!-- ACTIONS -->
+      <section class="actions" aria-label="What matters">
+
+        <article class="action">
+          <div class="action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <h3 class="action-title">Set goals</h3>
+            <p class="action-text">Define what matters most to you.</p>
+          </div>
+        </article>
+
+        <article class="action">
+          <div class="action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6c-2-1.5-5-2-8-1.5V19c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V4.5C17 4 14 4.5 12 6Z"/>
+                <path d="M12 6v14.5"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <h3 class="action-title">Learn daily</h3>
+            <p class="action-text">Grow your mind with valuable knowledge.</p>
+          </div>
+        </article>
+
+        <article class="action">
+          <div class="action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M12 20s-7-4.6-7-9.4A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.6C19 15.4 12 20 12 20Z"
+                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="action-title">Build meaningful connections</h3>
+            <p class="action-text">Surround yourself with people who uplift you.</p>
+          </div>
+        </article>
+
+        <article class="action">
+          <div class="action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 17l5-6 4 4 6-8"/>
+                <path d="M15 7h4v4"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <h3 class="action-title">Take action</h3>
+            <p class="action-text">Small steps today lead to big change.</p>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- QUOTE -->
+      <section class="quote-card" aria-label="Closing thought">
+        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+        <blockquote>
+          You can&rsquo;t get back yesterday.<br>
+          But you can make the most of today.
+        </blockquote>
+        <p class="make-count">Make today count</p>
+        <div class="quote-line" aria-hidden="true"></div>
+      </section>
+
+      <footer>
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M12 2.5 20.2 7.25v9.5L12 21.5 3.8 16.75v-9.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        This site is part of a focused life redirect engine.
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

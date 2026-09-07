@@ -41,6 +41,10 @@
 - [Rust](https://www.rust-lang.org/tools/install)
 - https://github.com/cyrus-and/gdb-dashboard / sudo apt install python3-pygments
 
+## Code Quality
+
+- [pmd](https://github.com/pmd/pmd/releases/download/pmd_releases%2F7.28.0-SNAPSHOT/pmd-dist-7.28.0-SNAPSHOT-bin.zip) -> `/opt/pmd`
+
 ## Language Servers
 
 - [bash-language-server](https://github.com/bash-lsp/bash-language-server)

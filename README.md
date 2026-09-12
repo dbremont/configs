@@ -41,7 +41,7 @@ cd ~ && git clone https://github.com/dbremont/configs
 
 ## TODO
 
-- [ ] We need a hook manager.
+- [ ] These seem to be configurations for computer-program production and its ecosystem. We need to create a directory for agent-related elements (guidelines, etc.).
 
 ## References
 

@@ -3,12 +3,12 @@
 MSG_FILE="$1"
 COMMIT_SOURCE="$2"
 
-# Do not overwrite existing messages created by Git.
-case "$COMMIT_SOURCE" in
-    merge|squash|commit)
-        exit 0
-        ;;
-esac
+# Only prepare the template when Git launches the editor with no message
+# source. Explicit sources (-m, --amend, cherry-pick, merge, ...) and the
+# messages they carry must be preserved as-is.
+if [[ -n "$COMMIT_SOURCE" ]]; then
+    exit 0
+fi
 
 BRANCH=$(git branch --show-current)
 

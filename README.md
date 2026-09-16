@@ -38,6 +38,7 @@ cd ~ && git clone https://github.com/dbremont/configs
 ## Notes
 
 - It is assumed that the **configuration** path is `$HOME/configs`. Refer to the **Git configuration** file for the explicit path reference.
+- To set the project’s file encoding locally, use `git config --local hooks.encoding ISO-8859-1`.
 
 ## TODO
 

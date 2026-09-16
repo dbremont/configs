@@ -7,6 +7,3 @@ local/
 **/env/**
 
 **/__pycache__
-
-# Machine-local git hook policy (never committed)
-.local

@@ -12,17 +12,15 @@
 #     - Encoded per the active encoding policy (default: UTF-8;
 #       US-ASCII is accepted as a subset of the policy encoding)
 #     - Free of a UTF-8 byte-order mark (BOM)
-#       [skipped under a non-UTF-8 local encoding policy]
+#       [skipped under a non-UTF-8 repository encoding policy]
 #     - Using LF (Unix) line endings only
 #
-# Local Encoding Policy (.local)
-#   A machine-local encoding override may be declared in:
+# Per-Repository Configuration (hooks.encoding)
+#   Each repository may declare its own encoding policy in its local git
+#   config, i.e. the .git/config of the repo in which the git command is
+#   executed:
 #
-#       <hooks dir>/.local
-#
-#   Format:
-#       # Machine-local encoding policy
-#       ENCODING=ISO-8859-1
+#       git config --local hooks.encoding ISO-8859-1
 #
 #   When present, the declared encoding REPLACES the default UTF-8 policy:
 #   only that encoding (plus US-ASCII as a subset) is accepted. Supported
@@ -30,12 +28,13 @@
 #   LF line endings are always enforced; the BOM check applies only to
 #   UTF-8 policies.
 #
-#   .local is machine-local and MUST NOT be committed: it is git-ignored
-#   and this hook rejects any commit that stages it.
+#   Only the repository-local config (.git/config) is honored; global
+#   (~/.gitconfig) and system config are intentionally ignored. Repos
+#   without this key are held to the default UTF-8 policy.
 #
 # Configuration
 #   annotations.conf (FILES: text file patterns inspected)
-#   .local           (optional ENCODING override; hooks dir; never committed)
+#   hooks.encoding   (optional per-repo encoding override; .git/config)
 #
 # Resolution
 #   Encoding : iconv -f <encoding> -t <policy encoding> <file>
@@ -59,28 +58,17 @@ GREEN='\033[0;32m'
 BOLD_RED='\033[1;31m'
 NC='\033[0m'
 
-# --- Local encoding policy (.local, machine-local override) ------------------
-LOCAL_POLICY_FILE="$HOOK_DIR/../.local"
-LOCAL_ENCODING=""
+# --- Per-repository encoding policy (hooks.encoding, .git/config) ------------
+POLICY_ENCODING="$(git config --local --get hooks.encoding || true)"
 
-if [[ -f "$LOCAL_POLICY_FILE" ]]; then
-    LOCAL_ENCODING=$(sed -E 's/#.*//' "$LOCAL_POLICY_FILE" \
-        | grep -E '^[[:space:]]*ENCODING[[:space:]]*=' \
-        | tail -n 1 \
-        | sed -E 's/^[[:space:]]*ENCODING[[:space:]]*=[[:space:]]*//; s/[[:space:]]+$//' || true)
-
-    if [[ -z "$LOCAL_ENCODING" ]]; then
-        echo -e "${BOLD_RED}Malformed local encoding policy (.local): expected ENCODING=<value>.${NC}"
-        exit 1
-    fi
-
-    case "$(echo "$LOCAL_ENCODING" | tr '[:lower:]' '[:upper:]')" in
+if [[ -n "$POLICY_ENCODING" ]]; then
+    case "$(echo "$POLICY_ENCODING" | tr '[:lower:]' '[:upper:]')" in
         ISO-8859-1)   ACCEPTED_ENCODINGS=(iso-8859-1 us-ascii) ;;
         ISO-8859-15)  ACCEPTED_ENCODINGS=(iso-8859-15 us-ascii) ;;
         WINDOWS-1252) ACCEPTED_ENCODINGS=(windows-1252 iso-8859-1 us-ascii) ;;
         UTF-8)        ACCEPTED_ENCODINGS=(utf-8 us-ascii) ;;
         *)
-            echo -e "${BOLD_RED}Unsupported encoding in .local: ${LOCAL_ENCODING}${NC}"
+            echo -e "${BOLD_RED}Unsupported hooks.encoding in repository config: ${POLICY_ENCODING}${NC}"
             echo "Supported values: UTF-8, ISO-8859-1, ISO-8859-15, WINDOWS-1252"
             exit 1
             ;;
@@ -89,28 +77,18 @@ else
     ACCEPTED_ENCODINGS=(utf-8 us-ascii)
 fi
 
-# BOM is a UTF-8 concept; skip the check under a non-UTF-8 local policy.
+# BOM is a UTF-8 concept; skip the check under a non-UTF-8 policy.
 BOM_CHECK=1
-if [[ -n "$LOCAL_ENCODING" && "$(echo "$LOCAL_ENCODING" | tr '[:lower:]' '[:upper:]')" != "UTF-8" ]]; then
+if [[ -n "$POLICY_ENCODING" && "$(echo "$POLICY_ENCODING" | tr '[:lower:]' '[:upper:]')" != "UTF-8" ]]; then
     BOM_CHECK=0
-fi
-
-# Backstop: the local policy file must never be committed.
-if git diff --cached --name-only --diff-filter=ACM | grep -Eq '(^|/)\.local$'; then
-    echo -e "${BOLD_RED}Commit rejected: .local is machine-local and must not be committed.${NC}"
-    echo
-    echo -e "Action required:"
-    echo -e "  ${YELLOW}git restore --staged .local${NC}"
-    echo
-    exit 1
 fi
 
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM -- $FILES)
 
 [[ -z "$STAGED_FILES" ]] && exit 0
 
-if [[ -n "$LOCAL_ENCODING" ]]; then
-    echo -e "${YELLOW}Local encoding policy: ${LOCAL_ENCODING} (.local)${NC}"
+if [[ -n "$POLICY_ENCODING" ]]; then
+    echo -e "${YELLOW}Repository encoding policy: ${POLICY_ENCODING} (hooks.encoding)${NC}"
     echo
 fi
 
@@ -151,8 +129,8 @@ done
 FAILED=0
 
 EXPECTED_ENCODING_LABEL="UTF-8"
-if [[ -n "$LOCAL_ENCODING" ]]; then
-    EXPECTED_ENCODING_LABEL="${LOCAL_ENCODING} (local policy)"
+if [[ -n "$POLICY_ENCODING" ]]; then
+    EXPECTED_ENCODING_LABEL="${POLICY_ENCODING} (hooks.encoding)"
 fi
 
 if [[ ${#BAD_ENCODING_FILES[@]} -gt 0 ]]; then
